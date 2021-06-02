@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Scan4Students-Ex</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="notYetReg">Non sei ancora registrato?</string>
+    <string name="reg">Registrati!</string>
+    <string name="login">Login</string>
+    <string name="app_logo">App Logo</string>
 </resources>
