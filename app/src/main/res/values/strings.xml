@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">Scan4Students-Ex</string>
     <string name="password">Password</string>
-    <string name="email">Email</string>
+    <string name="username">Username</string>
     <string name="notYetReg">Non sei ancora registrato?</string>
     <string name="reg">Registrati!</string>
     <string name="login">Login</string>
     <string name="app_logo">App Logo</string>
+    <string name="registration">Registrazione</string>
+    <string name="reg_yourself">Registrati</string>
+    <string name="male">Maschio</string>
+    <string name="female">Femmina</string>
+    <string name="name">Nome</string>
+    <string name="surname">Cognome</string>
+    <string name="password_confirm">Conferma Password</string>
+    <string name="collegeYearSubscription">Anno di iscrizione all\'università</string>
+
 </resources>
