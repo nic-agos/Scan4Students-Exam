@@ -69,6 +69,7 @@ dependencies {
     kapt "androidx.room:room-compiler:2.2.6"
     implementation "androidx.room:room-ktx:2.2.6"
 
+
     // CameraX core library using the camera2 implementation
     def camerax_version = "1.0.0"
     // The following line is optional, as the core library is included indirectly by camera-camera2
