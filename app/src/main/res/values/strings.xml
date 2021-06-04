@@ -14,5 +14,6 @@
     <string name="surname">Cognome</string>
     <string name="password_confirm">Conferma Password</string>
     <string name="collegeYearSubscription">Anno di iscrizione all\'università</string>
+    <string name="cameraicon" />
 
 </resources>
