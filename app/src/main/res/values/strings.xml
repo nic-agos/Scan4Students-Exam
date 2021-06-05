@@ -14,6 +14,12 @@
     <string name="surname">Cognome</string>
     <string name="password_confirm">Conferma Password</string>
     <string name="collegeYearSubscription">Anno di iscrizione all\'università</string>
-    <string name="cameraicon" />
+    <string name="cameraicon"> camera icon</string>
+    <string name="my_profile">Profilo</string>
+    <string name="my_notebooks">Quaderni</string>
+    <string name="notebook_icon">notebook icon</string>
+    <string name="profile_icon">profile icon</string>
+    <string name="search">Cerca</string>
+    <string name="motto">Carica e Condividi i tuoi appunti con gli altri utenti, oppure cerca gli appunti degli altri. Migliora il tuo studio!</string>
 
 </resources>
