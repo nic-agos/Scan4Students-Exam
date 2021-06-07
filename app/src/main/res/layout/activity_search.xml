@@ -27,12 +27,13 @@
         android:id="@+id/button"
         android:layout_width="96dp"
         android:layout_height="52dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="22dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/logo_blue"
         android:text="@string/search"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -40,9 +41,11 @@
         android:layout_width="266dp"
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:hint="@string/dots"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImageView">
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/searchBar"
@@ -55,13 +58,102 @@
         android:id="@+id/string"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="@string/looking_for"
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/ImageView" />
+
+    <Spinner
+        android:id="@+id/professorSpinner"
+        android:layout_width="269dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="12dp"
+        android:entries="@array/professori"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toEndOf="@+id/professorText"
+        app:layout_constraintTop_toBottomOf="@+id/subjectSpinner" />
+
+    <Spinner
+        android:id="@+id/facultySpinner"
+        android:layout_width="269dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="12dp"
+        android:entries="@array/facoltà"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toEndOf="@+id/facultyText2"
+        app:layout_constraintTop_toBottomOf="@+id/professorSpinner" />
+
+    <Spinner
+        android:id="@+id/collegeSpinner"
+        android:layout_width="269dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/universita"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintStart_toEndOf="@+id/facultyText"
+        app:layout_constraintTop_toBottomOf="@+id/facultySpinner" />
+
+    <TextView
+        android:id="@+id/subjectText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/subject"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/subjectSpinner" />
+
+    <TextView
+        android:id="@+id/professorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/professor"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subjectText" />
+
+    <TextView
+        android:id="@+id/facultyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/college"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facultyText2" />
+
+    <TextView
+        android:id="@+id/facultyText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/faculty"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/professorText" />
+
+    <Spinner
+        android:id="@+id/subjectSpinner"
+        android:layout_width="269dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="8dp"
+        android:entries="@array/materie_prova"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/subjectText"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -92,4 +184,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

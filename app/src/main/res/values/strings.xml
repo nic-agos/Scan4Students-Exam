@@ -25,4 +25,33 @@
     <string name ="looking_for">Cosa vuoi cercare?</string>
     <string name="notebook">Quaderno</string>
     <string name="user">Utente</string>
+    <string name="subject">Materia: </string>
+    <string name="professor">Professore: </string>
+    <string name="college">Università: </string>
+    <string name="faculty">Facoltà: </string>
+
+
+    <string-array name="materie_prova">
+        <item>Analisi 1</item>
+        <item>Geometria</item>
+        <item>Economia Aziendale</item>
+    </string-array>
+
+    <string-array name="facoltà">
+        <item>Ingegneria</item>
+        <item>Giurisprudenza</item>
+        <item>Economia</item>
+    </string-array>
+
+    <string-array name="professori">
+        <item>Di Gennaro</item>
+        <item>Isola</item>
+        <item>Dalena</item>
+    </string-array>
+
+    <string-array name="universita">
+        <item>uniroma1</item>
+        <item>uniroma2</item>
+        <item>uniroma3</item>
+    </string-array>
 </resources>
