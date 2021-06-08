@@ -15,15 +15,41 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class TestDao {
-    private val context = InstrumentationRegistry.getInstrumentation().targetContext
-    private val db = DbScan4Students.getInstance(context)
+
+    val context = InstrumentationRegistry.getInstrumentation().targetContext
+    val db = DbScan4Students.getInstance(context)
+
+    @Test
+    fun testStudentInsert(){
+        val stud = Studenti("lollo", "password", "marco", "bello", "23/03/99", "M","ingegneria")
+        Log.w("S4S", "${stud.username} ${stud.password} ${stud.nome} ${stud.cognome} ${stud.dataDiNascita} ${stud.sesso} ${stud.facolta}")
+        db.studentiDao().insertStudent(stud)
+    }
+
+    @Test
+    fun testGetAllStudents(){
+        val studList: MutableList<Studenti> = db.studentiDao().getAllStudents()
+        Log.w("S4S", studList[3].username)
+    }
+
+    /*
+    @Test
+    fun testNotebookInsert(){
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        val db = DbScan4Students.getInstance(context)
+        val notebook = Quaderni("quad di prova", 1, 0, "Private", "Italiano", "nicco2303","03/06/2021" )
+        db.quaderniDao().insertNotebook(notebook)
+
+    }
+
 
     @Test
     fun testGetAllNotebooksPages(){
         var pagine: MutableList<Pagine> = db.pagineDao().getAllNotebookPages(2)
         Log.w("S4S", "${pagine[0].path}")
     }
-    /*
+
+
     @Test
     fun testNotebookInsert(){
 
