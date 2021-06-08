@@ -23,10 +23,10 @@ interface DaoQuaderni {
     @Query("SELECT * FROM Quaderni WHERE studente = :username AND visibilita = 'PRIVATE'")
     fun getMyPrivateNotebooks(username: String) : MutableList<Quaderni>
 
-    @Query("UPDATE Quaderni SET numeroPagine = :pageNumb WHERE `index` = :notebookId")
+    @Query("UPDATE Quaderni SET numeroPagine = :pageNumb WHERE indice = :notebookId")
     fun updateNotebookPageNumber(pageNumb: Int, notebookId: Int)
 
-    @Query("DELETE FROM Quaderni WHERE `index` = :notebookId")
+    @Query("DELETE FROM Quaderni WHERE indice = :notebookId")
     fun deleteNotebook(notebookId: Int)
 
 

@@ -5,16 +5,16 @@ import androidx.room.ForeignKey
 import androidx.room.ForeignKey.NO_ACTION
 import androidx.room.PrimaryKey
 
-@Entity/*(
+@Entity(
         foreignKeys = [ForeignKey(
         entity = Quaderni::class,
-        parentColumns = arrayOf("index"),
+        parentColumns = arrayOf("indice"),
         childColumns = arrayOf("quaderno"),
         onDelete = NO_ACTION)]
-        )*/
+        )
 
 data class Pagine(
-            @PrimaryKey(autoGenerate = true) var index: Int,
+            @PrimaryKey(autoGenerate = true) var indice: Int,
             var quaderno: Int,
             var numPagina: Int,
             var path: String) {
