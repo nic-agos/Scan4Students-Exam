@@ -88,12 +88,12 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="@string/collegeYearSubscription"
+        android:hint="@string/college"
+        android:importantForAutofill="no"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birthday"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/birthday" />
 
     <RadioGroup
         android:id="@+id/genderRadio"
