@@ -1,3 +1,57 @@
 <resources>
     <string name="app_name">Scan4Students-Ex</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="notYetReg">Non sei ancora registrato?</string>
+    <string name="reg">Registrati!</string>
+    <string name="login">Login</string>
+    <string name="app_logo">App Logo</string>
+    <string name="registration">Registrazione</string>
+    <string name="reg_yourself">Registrati</string>
+    <string name="male">Maschio</string>
+    <string name="female">Femmina</string>
+    <string name="name">Nome</string>
+    <string name="surname">Cognome</string>
+    <string name="password_confirm">Conferma Password</string>
+    <string name="collegeYearSubscription">Anno di iscrizione all\'università</string>
+    <string name="cameraicon"> camera icon</string>
+    <string name="my_profile">Profilo</string>
+    <string name="my_notebooks">Quaderni</string>
+    <string name="notebook_icon">notebook icon</string>
+    <string name="profile_icon">profile icon</string>
+    <string name="search">Cerca</string>
+    <string name="motto">Carica e Condividi i tuoi appunti con gli altri utenti, oppure cerca gli appunti degli altri. Migliora il tuo studio!</string>
+    <string name="dots">...</string>
+    <string name ="looking_for">Cosa vuoi cercare?</string>
+    <string name="notebook">Quaderno</string>
+    <string name="user">Utente</string>
+    <string name="subject">Materia: </string>
+    <string name="professor">Professore: </string>
+    <string name="college">Università: </string>
+    <string name="faculty">Facoltà: </string>
+
+
+    <string-array name="materie_prova">
+        <item>Analisi 1</item>
+        <item>Geometria</item>
+        <item>Economia Aziendale</item>
+    </string-array>
+
+    <string-array name="facoltà">
+        <item>Ingegneria</item>
+        <item>Giurisprudenza</item>
+        <item>Economia</item>
+    </string-array>
+
+    <string-array name="professori">
+        <item>Di Gennaro</item>
+        <item>Isola</item>
+        <item>Dalena</item>
+    </string-array>
+
+    <string-array name="universita">
+        <item>uniroma1</item>
+        <item>uniroma2</item>
+        <item>uniroma3</item>
+    </string-array>
 </resources>
