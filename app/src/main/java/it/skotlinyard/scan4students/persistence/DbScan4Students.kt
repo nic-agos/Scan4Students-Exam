@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-//Materie::class, Pagine::class, Quaderni::class, Studenti::class, Quaderni::class
-@Database(entities = [Studenti::class], version = 1, exportSchema = true)
+//Materie::class, Pagine::class, Studenti::class, Studenti::class, Quaderni::class
+@Database(entities = [Pagine::class], version = 1, exportSchema = true)
 abstract class DbScan4Students : RoomDatabase() {
     companion object {
         private var db: DbScan4Students? = null // Singleton
@@ -22,11 +22,13 @@ abstract class DbScan4Students : RoomDatabase() {
         }
     }
 
-    abstract fun studentiDao(): DaoStudenti
+
+    abstract fun pagineDao(): DaoPagine
+
     /*
     abstract fun quaderniDao(): DaoQuaderni
+    abstract fun studentiDao(): DaoStudenti
     abstract fun materieDAO():DaoMaterie
-    abstract fun pagineDAO(): DaoPagine
 
      */
 }
