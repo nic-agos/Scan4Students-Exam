@@ -36,6 +36,8 @@ class CameraActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
+
         // Request camera permissions
         if (allPermissionsGranted()) {
             cameraFacing="BACK"
@@ -45,6 +47,7 @@ class CameraActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
+
         // Set up the listener for take photo button
         binding.captureBtn.setOnClickListener { takePhoto() }
 
@@ -52,6 +55,8 @@ class CameraActivity : AppCompatActivity() {
 
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
+
+
     private fun takePhoto() {
         // Get a stable reference of the modifiable image capture use case
         val imageCapture = imageCapture ?: return

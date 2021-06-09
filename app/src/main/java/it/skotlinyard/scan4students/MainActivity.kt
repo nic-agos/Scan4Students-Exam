@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.registrationBtn.setOnClickListener{
-            val intent= Intent(this, SearchActivity::class.java)
+            val intent= Intent(this, CameraActivity::class.java)
             startActivity(intent)
         }
         binding.loginBtn.setOnClickListener {
