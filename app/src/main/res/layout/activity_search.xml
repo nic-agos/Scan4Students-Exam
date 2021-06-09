@@ -133,6 +133,19 @@
         app:layout_constraintStart_toEndOf="@+id/subjectText"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
+    <Button
+        android:id="@+id/searchButton2"
+        android:layout_width="96dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/logo_blue"
+        android:text="@string/search"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facultySpinner" />
+
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"

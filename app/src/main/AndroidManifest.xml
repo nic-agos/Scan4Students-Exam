@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scan4StudentsEx">
-        <activity android:name=".UserProfileActivity"/>
+        <activity android:name=".StatsActivity"></activity>
+        <activity android:name=".UserProfileActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,8 +25,7 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".CameraActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".SearchActivity"/>
-
+        <activity android:name=".SearchActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

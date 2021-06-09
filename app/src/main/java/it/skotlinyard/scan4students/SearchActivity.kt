@@ -21,6 +21,7 @@ class SearchActivity: AppCompatActivity() {
             binding.facultyText2.visibility= View.VISIBLE
             binding.professorText.visibility= View.VISIBLE
             binding.subjectText.visibility= View.VISIBLE
+            binding.searchButton2.visibility=View.VISIBLE
             binding.textInputLayout.visibility=View.GONE
             binding.searchButton.visibility=View.GONE
         }
@@ -31,6 +32,7 @@ class SearchActivity: AppCompatActivity() {
             binding.facultyText2.visibility= View.GONE
             binding.professorText.visibility= View.GONE
             binding.subjectText.visibility= View.GONE
+            binding.searchButton2.visibility=View.GONE
             binding.textInputLayout.visibility=View.VISIBLE
             binding.searchButton.visibility=View.VISIBLE
         }
