@@ -17,5 +17,7 @@ interface DaoPagine {
     @Query("SELECT * FROM Pagine WHERE quaderno = :notebook ORDER BY numPagina")
     fun getAllNotebookPages(notebook: Int) : MutableList<Pagine>
 
+    @Query("SELECT MAX(indice) FROM Pagine")
+    fun getLatestUploadedPage(): Int
 
 }

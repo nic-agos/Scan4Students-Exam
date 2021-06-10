@@ -2,6 +2,7 @@ package it.skotlinyard.scan4students.persistence
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
 import androidx.room.ForeignKey.NO_ACTION
 import androidx.room.PrimaryKey
 
@@ -10,7 +11,7 @@ import androidx.room.PrimaryKey
         entity = Quaderni::class,
         parentColumns = arrayOf("indice"),
         childColumns = arrayOf("quaderno"),
-        onDelete = NO_ACTION)]
+        onDelete = CASCADE)]
         )
 
 data class Pagine(
@@ -19,9 +20,7 @@ data class Pagine(
             var numPagina: Int,
             var path: String) {
         constructor(notebook: Int, pageNumber: Int, path: String) :
-                this(0, 0,0,"") {
-                    quaderno = notebook
-                    numPagina = pageNumber
-                    this.path = path
+                this(0, notebook,pageNumber,path) {
+
     }
 }

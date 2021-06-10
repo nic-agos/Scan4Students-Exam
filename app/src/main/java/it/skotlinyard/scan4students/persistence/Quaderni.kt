@@ -11,14 +11,15 @@ import androidx.room.PrimaryKey
 @Entity(foreignKeys = [ForeignKey(
         entity = Studenti::class,
         parentColumns = arrayOf("username"),
-        childColumns = arrayOf("studente")),
+        childColumns = arrayOf("studente"),
+        onDelete = CASCADE),
         ForeignKey(
         entity = Materie::class,
         parentColumns = arrayOf("indice"),
-        childColumns = arrayOf("materia")
-
-        )]
-    )
+        childColumns = arrayOf("materia"),
+        onDelete = CASCADE)
+            ]
+        )
 
 data class Quaderni(
         @PrimaryKey (autoGenerate = true) var indice: Int,

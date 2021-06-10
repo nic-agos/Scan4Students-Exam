@@ -12,16 +12,7 @@ data class Studenti(
         var nome: String,
         var cognome: String,
         var dataDiNascita: String,
-        var sesso: String) {
-
-        constructor(username: String, password: String, nome: String, cognome: String, dataDiNascita: String) : this("","","","","","") {
-                this.username = username
-                this.password = password
-                this.nome = nome
-                this.cognome = cognome
-                this.dataDiNascita = dataDiNascita
-                this.sesso = ""
-        }
-
-}
+        var sesso: String,
+        var facolta: String
+        )
 

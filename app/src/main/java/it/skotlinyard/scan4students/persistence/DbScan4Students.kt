@@ -17,7 +17,7 @@ abstract class DbScan4Students : RoomDatabase() {
                         "Scan4Students.db"
 
                 )
-                        .createFromAsset("database/Scan4Students.db")
+                        .createFromAsset("database/Scan4Students_v.1.1.db")
             .build()
             return db as DbScan4Students
         }
