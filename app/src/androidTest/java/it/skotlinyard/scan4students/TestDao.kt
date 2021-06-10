@@ -12,11 +12,6 @@ class TestDao {
     val context = InstrumentationRegistry.getInstrumentation().targetContext
     val db = DbScan4Students.getInstance(context)
 
-    @Test
-    fun testDeleteSubject(){
-        db.materieDAO().deleteSubject(1)
-    }
-    /*
     // test DaoMaterie
     @Test
     fun testInsertSubject(){
@@ -91,7 +86,8 @@ class TestDao {
     // test DaoStudenti
     @Test
     fun testInsertStudent(){
-       c
+       var stud = Studenti ("nicco23","password", "Niccolò", "Agostinelli", "23/03/1999", "M", "Ingegneria")
+        db.studentiDao().insertStudent(stud)
     }
 
     @Test
@@ -200,6 +196,4 @@ class TestDao {
         Log.v("S4S","$last")
     }
 
-
-     */
 }
