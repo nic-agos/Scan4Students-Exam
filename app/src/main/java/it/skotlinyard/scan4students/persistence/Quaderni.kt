@@ -9,15 +9,15 @@ import androidx.room.ForeignKey.NO_ACTION
 import androidx.room.PrimaryKey
 
 @Entity(foreignKeys = [ForeignKey(
-        entity = Studenti::class,
-        parentColumns = arrayOf("username"),
-        childColumns = arrayOf("studente"),
-        onDelete = CASCADE),
-        ForeignKey(
-        entity = Materie::class,
-        parentColumns = arrayOf("indice"),
-        childColumns = arrayOf("materia"),
-        onDelete = CASCADE)
+                entity = Studenti::class,
+                parentColumns = arrayOf("username"),
+                childColumns = arrayOf("studente"),
+                onDelete = CASCADE),
+            ForeignKey(
+                entity = Materie::class,
+                parentColumns = arrayOf("indice"),
+                childColumns = arrayOf("materia"),
+                onDelete = CASCADE)
             ]
         )
 
