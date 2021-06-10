@@ -1,22 +1,31 @@
 package it.skotlinyard.scan4students
 
+import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
+import androidx.camera.core.ImageCapture
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import it.skotlinyard.scan4students.databinding.ActivityNotebookViewBinding
+import it.skotlinyard.scan4students.utils.FolderWorker
 
 class NotebookViewActivity : AppCompatActivity() {
 
     private var imageRecycler: RecyclerView?=null
     private var progressBar: ProgressBar?=null
     private var allPictures:ArrayList<Image>?=null
+    private var leftIcon: ImageView?=null
+    private var rightIcon: ImageView?=null
+    private var title: TextView?=null
 
     private lateinit var binding: ActivityNotebookViewBinding
 
@@ -26,6 +35,21 @@ class NotebookViewActivity : AppCompatActivity() {
         binding = ActivityNotebookViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        leftIcon=findViewById(R.id.left_icon)
+        leftIcon?.setOnClickListener{
+            val intent= Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        rightIcon=findViewById(R.id.right_icon)
+        rightIcon?.setOnClickListener{
+            val intent= Intent(this, CameraActivity::class.java)
+            startActivity(intent)
+        }
+
+        title=findViewById(R.id.toolbar_title)
+        title?.setText("Nome del quaderno")
+
         imageRecycler=binding.imageRecycler
         progressBar=binding.reyclerProgressBar
 
@@ -33,9 +57,9 @@ class NotebookViewActivity : AppCompatActivity() {
         imageRecycler?.setHasFixedSize(true)
 
         //Storage Permissions
-        if(ContextCompat.checkSelfPermission(this@NotebookViewActivity, android.Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+        if(ContextCompat.checkSelfPermission(this@NotebookViewActivity, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
         {
-            ActivityCompat.requestPermissions(this@NotebookViewActivity, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),101)
+            ActivityCompat.requestPermissions(this@NotebookViewActivity, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),101)
         }
         allPictures= ArrayList()
         if(allPictures!!.isEmpty())

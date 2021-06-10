@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scan4StudentsEx">
-        <activity android:name=".ImageFullActivity"></activity>
+        <activity android:name=".VisualizeNotebooksActivity"></activity>
+        <activity android:name=".ImageFullActivity" />
         <activity android:name=".NotebookViewActivity" />
         <activity android:name=".StatsActivity" />
         <activity android:name=".UserProfileActivity" />
