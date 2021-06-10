@@ -13,6 +13,6 @@ data class Studenti(
         var cognome: String,
         var dataDiNascita: String,
         var sesso: String,
-        var facolta: String
+        var universita: String
         )
 
