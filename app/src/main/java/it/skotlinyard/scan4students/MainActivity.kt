@@ -16,11 +16,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.registrationBtn.setOnClickListener{
-            val intent= Intent(this, CameraActivity::class.java)
+            val intent= Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
         }
         binding.loginBtn.setOnClickListener {
-            val intent = Intent(this, CameraActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }

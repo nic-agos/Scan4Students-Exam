@@ -1,6 +1,8 @@
 package it.skotlinyard.scan4students
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.skotlinyard.scan4students.databinding.ActivityHomeBinding
 
@@ -12,5 +14,20 @@ class HomeActivity: AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
+
+        binding.searchButtonH.setOnClickListener{
+            val intent= Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
+        binding.profileButton.setOnClickListener{
+            val intent= Intent(this, UserProfileActivity::class.java)
+            startActivity(intent)
+        }
+        binding.myNotebookButton.setOnClickListener{
+        //TODO add notebook view and intent here.
+        /*val intent= Intent(this, ????::class.java)
+            startActivity(intent)*/
+            Toast.makeText(this, "work in progress", Toast.LENGTH_LONG).show()
+        }
     }
 }
