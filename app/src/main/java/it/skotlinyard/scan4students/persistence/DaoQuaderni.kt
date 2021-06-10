@@ -11,11 +11,17 @@ interface DaoQuaderni {
     @Insert
     fun insertNotebook(notebook: Quaderni)
 
+    @Query("DELETE FROM Quaderni WHERE indice = :notebookId")
+    fun deleteNotebook(notebookId: Int)
+
     @Query("SELECT * FROM Quaderni")
-    fun getAllNotebooks(): LiveData<Quaderni>
+    fun getAllNotebooks(): MutableList<Quaderni>
+
+    @Query("SELECT * FROM Quaderni WHERE indice = :notebookId")
+    fun getNotebookByIndex(notebookId: Int): Quaderni
 
     @Query("SELECT * FROM Quaderni WHERE materia = :subject AND visibilita = 'PUBLIC'")
-    fun getOtherNotebooksBySubject(subject: Int) : MutableList<Quaderni>
+    fun getPublicNotebooksBySubject(subject: Int) : MutableList<Quaderni>
 
     @Query("SELECT * FROM Quaderni WHERE studente = :username AND visibilita = 'PUBLIC'")
     fun getPublicNotebooksByUser(username: String) : MutableList<Quaderni>
@@ -25,9 +31,5 @@ interface DaoQuaderni {
 
     @Query("UPDATE Quaderni SET numeroPagine = :pageNumb WHERE indice = :notebookId")
     fun updateNotebookPageNumber(pageNumb: Int, notebookId: Int)
-
-    @Query("DELETE FROM Quaderni WHERE indice = :notebookId")
-    fun deleteNotebook(notebookId: Int)
-
 
 }

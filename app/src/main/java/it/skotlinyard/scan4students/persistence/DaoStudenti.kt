@@ -11,10 +11,18 @@ interface DaoStudenti {
     @Insert
     fun insertStudent(student: Studenti)
 
-    @Query("SELECT * FROM Studenti WHERE username = :username AND password = :password")
-    fun login(username : String,password : String) : Studenti
-
     @Query("DELETE FROM Studenti WHERE username = :username")
-    fun deleteAccount(username: String)
+    fun deleteStudent(username: String)
+
+    @Query("SELECT * FROM Studenti WHERE username = :username AND password = :password")
+    fun login(username : String,password : String): Studenti
+
+    @Query("SELECT * FROM Studenti")
+    fun getAllStudents(): MutableList<Studenti>
+
+    @Query("SELECT * FROM Studenti WHERE username =:username")
+    fun getStudent(username: String): Studenti
+
+
 
 }
