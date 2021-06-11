@@ -1,4 +1,4 @@
-package it.skotlinyard.scan4students
+package it.skotlinyard.scan4students.view
 
 import android.Manifest
 import android.content.Intent
@@ -10,11 +10,13 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.camera.core.ImageCapture
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import it.skotlinyard.scan4students.model.Image
+import it.skotlinyard.scan4students.model.ImageAdapter
+import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.databinding.ActivityNotebookViewBinding
 import it.skotlinyard.scan4students.utils.FolderWorker
 
@@ -69,7 +71,7 @@ class NotebookViewActivity : AppCompatActivity() {
             //get all Images from storage
             allPictures=getAllImages()
             //set adapter to recycler
-            imageRecycler?.adapter=ImageAdapter(this, allPictures!!)
+            imageRecycler?.adapter= ImageAdapter(this, allPictures!!)
             progressBar?.visibility= View.GONE
         }
     }

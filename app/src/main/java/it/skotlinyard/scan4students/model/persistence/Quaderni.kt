@@ -1,11 +1,8 @@
-package it.skotlinyard.scan4students.persistence
+package it.skotlinyard.scan4students.model.persistence
 
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE
-import androidx.room.ForeignKey.NO_ACTION
 import androidx.room.PrimaryKey
 
 @Entity(foreignKeys = [ForeignKey(

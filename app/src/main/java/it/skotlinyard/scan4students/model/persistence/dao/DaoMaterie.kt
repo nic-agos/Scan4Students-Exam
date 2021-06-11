@@ -1,9 +1,10 @@
-package it.skotlinyard.scan4students.persistence
+package it.skotlinyard.scan4students.model.persistence.dao
 
 import androidx.room.Insert
 import androidx.room.Query
 
 import androidx.room.Dao
+import it.skotlinyard.scan4students.model.persistence.Materie
 
 @Dao
 interface DaoMaterie {

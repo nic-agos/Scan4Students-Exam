@@ -1,4 +1,4 @@
-package it.skotlinyard.scan4students
+package it.skotlinyard.scan4students.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

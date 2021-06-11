@@ -1,8 +1,9 @@
-package it.skotlinyard.scan4students
+package it.skotlinyard.scan4students.view
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.databinding.ActivityRegistrationBinding
 
 // Username, password, nome, cognome, data di nascita, sesso, anno di iscrizione all'università

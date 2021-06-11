@@ -3,7 +3,7 @@ package it.skotlinyard.scan4students
 import android.util.Log
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import it.skotlinyard.scan4students.persistence.*
+import it.skotlinyard.scan4students.model.persistence.*
 import org.junit.Test
 import org.junit.runner.RunWith
 

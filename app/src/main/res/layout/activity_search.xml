@@ -9,7 +9,7 @@
     android:backgroundTintMode="add"
     android:foregroundTint="@color/logo_blue"
     android:foregroundTintMode="add"
-    tools:context=".SearchActivity">
+    tools:context=".view.SearchActivity">
 
     <ImageView
         android:id="@+id/ImageView"

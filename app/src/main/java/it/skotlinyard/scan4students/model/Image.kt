@@ -1,4 +1,4 @@
-package it.skotlinyard.scan4students
+package it.skotlinyard.scan4students.model
 
 class Image {
     var imagePath:String?=null

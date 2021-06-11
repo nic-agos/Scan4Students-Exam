@@ -1,4 +1,4 @@
-package it.skotlinyard.scan4students
+package it.skotlinyard.scan4students.view
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -69,7 +69,8 @@ class CameraActivity : AppCompatActivity() {
 
         } else {
             ActivityCompat.requestPermissions(
-                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+            )
         }
 
         // Set up the listener for take photo button
@@ -87,7 +88,8 @@ class CameraActivity : AppCompatActivity() {
         // Create time-stamped output file to hold the image
         val photoFile = File(
             outputDirectory,
-            SimpleDateFormat(FILENAME_FORMAT, Locale.US
+            SimpleDateFormat(
+                FILENAME_FORMAT, Locale.US
             ).format(System.currentTimeMillis()) + ".jpg")
 
         // Create output options object which contains file + metadata

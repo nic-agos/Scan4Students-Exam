@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".CreateNotebookActivity">
+    tools:context=".view.CreateNotebookActivity">
 
     <TextView
         android:id="@+id/textView9"

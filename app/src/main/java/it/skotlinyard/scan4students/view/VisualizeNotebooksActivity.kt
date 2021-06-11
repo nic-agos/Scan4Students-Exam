@@ -1,4 +1,4 @@
-package it.skotlinyard.scan4students
+package it.skotlinyard.scan4students.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,14 +9,16 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import it.skotlinyard.scan4students.model.Image
+import it.skotlinyard.scan4students.model.ImageAdapter
+import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.databinding.ActivityVisualizeNotebooksBinding
-import it.skotlinyard.scan4students.persistence.Quaderni
 
 class VisualizeNotebooksActivity : AppCompatActivity() {
 
-    private var notebookRecycler: RecyclerView?=null
+    private var imageRecycler: RecyclerView?=null
     private var progressBar: ProgressBar?=null
-    private var allNotebooks:ArrayList<Quaderni>?=null //in realtà è array list di quaderni
+    private var allNotebooks:ArrayList<Image>?=null //in realtà è array list di quaderni
     private lateinit var binding: ActivityVisualizeNotebooksBinding
     private var leftIcon: ImageView?=null
     private var rightIcon: ImageView?=null
@@ -34,18 +36,18 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
         }
         rightIcon=findViewById(R.id.right_icon)
         rightIcon?.setOnClickListener{
-            val intent= Intent(this, CreateNotebookActivity::class.java)
+            val intent= Intent(this, HomeActivity::class.java) //Activity per inserimento nuovo quaderno
             startActivity(intent)
         }
 
         title=findViewById(R.id.toolbar_title)
         title?.setText(getString(R.string.Notebooks))
 
-        notebookRecycler=binding.notebookRecycler
+        imageRecycler=binding.imageRecycler
         progressBar=binding.reyclerProgressBar
 
-        notebookRecycler?.layoutManager= GridLayoutManager(this,1)
-        notebookRecycler?.setHasFixedSize(true)
+        imageRecycler?.layoutManager= GridLayoutManager(this,1)
+        imageRecycler?.setHasFixedSize(true)
 
         allNotebooks=ArrayList()
         if (allNotebooks!!.isEmpty())
@@ -53,9 +55,9 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
 
             progressBar?.visibility= View.VISIBLE
             //get all NOtebooks from storage
-            TODO("Lista di quaderni")
+            TODO("Funzione che restituisce la lista dei quaderni dato il nome")
             //set adapter to recycler
-            notebookRecycler?.adapter= NotebookAdapter(this, allNotebooks!!)
+            imageRecycler?.adapter= ImageAdapter(this, allPictures!!)
             progressBar?.visibility= View.GONE
         }
     }
