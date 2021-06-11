@@ -13,20 +13,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scan4StudentsEx">
-        <activity android:name=".CreateNotebookActivity"></activity>
-        <activity android:name=".StatsActivity" />
-        <activity android:name=".UserProfileActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.CreateNotebookActivity"></activity>
+        <activity android:name=".view.StatsActivity" />
+        <activity android:name=".view.UserProfileActivity" />
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".CameraActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".view.RegistrationActivity" />
+        <activity android:name=".view.CameraActivity" />
+        <activity android:name=".view.HomeActivity" />
+        <activity android:name=".view.SearchActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

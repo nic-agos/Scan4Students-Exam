@@ -1,10 +1,9 @@
-package it.skotlinyard.scan4students.persistence
+package it.skotlinyard.scan4students.model.persistence.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import it.skotlinyard.scan4students.model.persistence.Quaderni
 
 @Dao
 interface DaoQuaderni {

@@ -1,4 +1,4 @@
-package it.skotlinyard.scan4students
+package it.skotlinyard.scan4students.model
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,8 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import it.skotlinyard.scan4students.R
+import it.skotlinyard.scan4students.view.ImageFullActivity
 
 
 class ImageAdapter(private var context: Context, private var imagesList: ArrayList<Image>) :

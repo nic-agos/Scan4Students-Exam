@@ -1,9 +1,9 @@
-package it.skotlinyard.scan4students.persistence
+package it.skotlinyard.scan4students.model.persistence.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import it.skotlinyard.scan4students.model.persistence.Studenti
 
 @Dao
 interface DaoStudenti {

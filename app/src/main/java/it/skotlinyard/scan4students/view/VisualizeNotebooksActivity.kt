@@ -1,4 +1,4 @@
-package it.skotlinyard.scan4students
+package it.skotlinyard.scan4students.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,9 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import it.skotlinyard.scan4students.model.Image
+import it.skotlinyard.scan4students.model.ImageAdapter
+import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.databinding.ActivityVisualizeNotebooksBinding
 
 class VisualizeNotebooksActivity : AppCompatActivity() {
@@ -54,7 +57,7 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
             //get all NOtebooks from storage
             TODO("Funzione che restituisce la lista dei quaderni dato il nome")
             //set adapter to recycler
-            imageRecycler?.adapter=ImageAdapter(this, allPictures!!)
+            imageRecycler?.adapter= ImageAdapter(this, allPictures!!)
             progressBar?.visibility= View.GONE
         }
     }

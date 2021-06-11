@@ -1,9 +1,13 @@
-package it.skotlinyard.scan4students.persistence
+package it.skotlinyard.scan4students.model.persistence
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import it.skotlinyard.scan4students.model.persistence.dao.DaoMaterie
+import it.skotlinyard.scan4students.model.persistence.dao.DaoPagine
+import it.skotlinyard.scan4students.model.persistence.dao.DaoQuaderni
+import it.skotlinyard.scan4students.model.persistence.dao.DaoStudenti
 
 @Database(entities = [Quaderni::class, Materie::class, Studenti::class, Pagine::class], version = 1, exportSchema = true)
 abstract class DbScan4Students : RoomDatabase() {
@@ -26,6 +30,6 @@ abstract class DbScan4Students : RoomDatabase() {
     abstract fun pagineDao(): DaoPagine
     abstract fun quaderniDao(): DaoQuaderni
     abstract fun studentiDao(): DaoStudenti
-    abstract fun materieDAO():DaoMaterie
+    abstract fun materieDAO(): DaoMaterie
 }
 

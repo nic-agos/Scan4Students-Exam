@@ -1,8 +1,8 @@
 package it.skotlinyard.scan4students
 
 import androidx.test.platform.app.InstrumentationRegistry
-import it.skotlinyard.scan4students.persistence.DbScan4Students
-import it.skotlinyard.scan4students.persistence.Studenti
+import it.skotlinyard.scan4students.model.persistence.DbScan4Students
+import it.skotlinyard.scan4students.model.persistence.Studenti
 import org.junit.Test
 
 class Test2Dao {
