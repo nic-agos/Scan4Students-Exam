@@ -10,12 +10,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import it.skotlinyard.scan4students.databinding.ActivityVisualizeNotebooksBinding
+import it.skotlinyard.scan4students.persistence.Quaderni
 
 class VisualizeNotebooksActivity : AppCompatActivity() {
 
-    private var imageRecycler: RecyclerView?=null
+    private var notebookRecycler: RecyclerView?=null
     private var progressBar: ProgressBar?=null
-    private var allNotebooks:ArrayList<Image>?=null //in realtà è array list di quaderni
+    private var allNotebooks:ArrayList<Quaderni>?=null //in realtà è array list di quaderni
     private lateinit var binding: ActivityVisualizeNotebooksBinding
     private var leftIcon: ImageView?=null
     private var rightIcon: ImageView?=null
@@ -33,18 +34,18 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
         }
         rightIcon=findViewById(R.id.right_icon)
         rightIcon?.setOnClickListener{
-            val intent= Intent(this, HomeActivity::class.java) //Activity per inserimento nuovo quaderno
+            val intent= Intent(this, CreateNotebookActivity::class.java)
             startActivity(intent)
         }
 
         title=findViewById(R.id.toolbar_title)
         title?.setText(getString(R.string.Notebooks))
 
-        imageRecycler=binding.imageRecycler
+        notebookRecycler=binding.notebookRecycler
         progressBar=binding.reyclerProgressBar
 
-        imageRecycler?.layoutManager= GridLayoutManager(this,1)
-        imageRecycler?.setHasFixedSize(true)
+        notebookRecycler?.layoutManager= GridLayoutManager(this,1)
+        notebookRecycler?.setHasFixedSize(true)
 
         allNotebooks=ArrayList()
         if (allNotebooks!!.isEmpty())
@@ -52,9 +53,9 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
 
             progressBar?.visibility= View.VISIBLE
             //get all NOtebooks from storage
-            TODO("Funzione che restituisce la lista dei quaderni dato il nome")
+            TODO("Lista di quaderni")
             //set adapter to recycler
-            imageRecycler?.adapter=ImageAdapter(this, allPictures!!)
+            notebookRecycler?.adapter= NotebookAdapter(this, allNotebooks!!)
             progressBar?.visibility= View.GONE
         }
     }

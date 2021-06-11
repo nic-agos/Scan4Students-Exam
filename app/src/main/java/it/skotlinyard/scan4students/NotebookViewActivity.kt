@@ -46,9 +46,10 @@ class NotebookViewActivity : AppCompatActivity() {
             val intent= Intent(this, CameraActivity::class.java)
             startActivity(intent)
         }
-
+        val notebookTitle= intent.getStringExtra("Nome")
+        val notebookSubject= intent.getStringExtra("Materia")
         title=findViewById(R.id.toolbar_title)
-        title?.setText("Nome del quaderno")
+        title?.setText(notebookTitle+"\n"+notebookSubject)
 
         imageRecycler=binding.imageRecycler
         progressBar=binding.reyclerProgressBar
