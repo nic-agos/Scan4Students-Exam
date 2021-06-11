@@ -61,4 +61,6 @@
         <item>uniroma2</item>
         <item>uniroma3</item>
     </string-array>
+
+    <string name="Notebooks">I tuoi quaderni</string>
 </resources>
