@@ -1,5 +1,6 @@
 package it.skotlinyard.scan4students
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import it.skotlinyard.scan4students.databinding.ActivityRegistrationBinding
@@ -24,11 +25,16 @@ class RegistrationActivity : AppCompatActivity() {
             syntaxControl(binding.name.toString(),binding.surname.toString(), binding.username.toString(),
                 binding.pswEntry.toString(),binding.pswConfirm.toString(),birthday,binding.collegeYear.toString().toInt(),
                 gender)
+
+            //after registration go back to login
+            val intent= Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 
     private fun syntaxControl(name: String,surname: String,username: String,pswEntry: String,
                               pswConfirm: String,birthday: Array<Int>, collegeYear: Int, gender: String){
-//TODO
+        //TODO
     }
+
 }

@@ -60,6 +60,8 @@ class CameraActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        supportActionBar?.hide()
+
         // Request camera permissions
         if (allPermissionsGranted()) {
             cameraFacing="BACK"

@@ -5,9 +5,6 @@
     <uses-feature android:name="android.hardware.camera.any" />
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,9 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scan4StudentsEx">
-        <activity android:name=".VisualizeNotebooksActivity"></activity>
-        <activity android:name=".ImageFullActivity" />
-        <activity android:name=".NotebookViewActivity" />
+        <activity android:name=".CreateNotebookActivity"></activity>
         <activity android:name=".StatsActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".MainActivity">

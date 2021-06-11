@@ -31,6 +31,12 @@
     <string name="faculty">Facoltà: </string>
     <string name="shared_notebooks">Quaderni Condivisi</string>
     <string name="stats">Statistiche</string>
+    <string name="title">Titolo</string>
+    <string name="visibility">Visibilità</string>
+    <string name="private_">Privato</string>
+    <string name="public_">Pubblico</string>
+    <string name="prof_n_sub">Professore e Materia</string>
+    <string name="create_notebook">Crea Quaderno</string>
 
     <string-array name="materie_prova">
         <item>Analisi 1</item>

@@ -8,10 +8,11 @@ import androidx.room.PrimaryKey
 
 @Entity(
         foreignKeys = [ForeignKey(
-        entity = Quaderni::class,
-        parentColumns = arrayOf("indice"),
-        childColumns = arrayOf("quaderno"),
-        onDelete = CASCADE)]
+            entity = Quaderni::class,
+            parentColumns = arrayOf("indice"),
+            childColumns = arrayOf("quaderno"),
+            onDelete = CASCADE)
+            ]
         )
 
 data class Pagine(
