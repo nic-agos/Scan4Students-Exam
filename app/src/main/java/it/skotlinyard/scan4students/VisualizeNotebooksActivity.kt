@@ -3,6 +3,7 @@ package it.skotlinyard.scan4students
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -48,7 +49,13 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
         allNotebooks=ArrayList()
         if (allNotebooks!!.isEmpty())
         {
+
+            progressBar?.visibility= View.VISIBLE
+            //get all NOtebooks from storage
             TODO("Funzione che restituisce la lista dei quaderni dato il nome")
+            //set adapter to recycler
+            imageRecycler?.adapter=ImageAdapter(this, allPictures!!)
+            progressBar?.visibility= View.GONE
         }
     }
 }
