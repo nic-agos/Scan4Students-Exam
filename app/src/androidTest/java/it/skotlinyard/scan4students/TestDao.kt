@@ -12,28 +12,57 @@ class TestDao {
     val context = InstrumentationRegistry.getInstrumentation().targetContext
     val db = DbScan4Students.getInstance(context)
 
+
+    // test DaoUniversita
+    @Test
+    fun testGetAllUniversitiesOrderByName(){
+        var uni: MutableList<Universita> = db.universitaDao().getAllUniversitiesOrderByName()
+        for (u in uni){
+            Log.v("S4S", "${u.nome}" )
+        }
+
+    }
+
+    @Test
+    fun testGetAllUniversitiesOrderByRegion(){
+        var uni: MutableList<Universita> = db.universitaDao().getAllUniversitiesOrderByRegion()
+        for (u in uni){
+            Log.v("S4S", "${u.nome}" )
+        }
+
+    }
+
+    @Test
+    fun testGetAllUniversities(){
+        var uni: MutableList<Universita> = db.universitaDao().getAllUniversities()
+        for (u in uni){
+            Log.v("S4S", "${u.nome}" )
+        }
+
+    }
+
     // test DaoMaterie
     @Test
     fun testInsertSubject(){
         var mat = Materie("Ingegneria", "Analisi II", "Perfetti", 6, 2, 1)
-        db.materieDAO().insertSubject(mat)
+        db.materieDao().insertSubject(mat)
 
     }
 
     @Test
     fun testDeleteSubject(){
-        db.materieDAO().deleteSubject(1)
+        db.materieDao().deleteSubject(1)
     }
 
     @Test
     fun testGetSubjectByProfAndSubject(){
-        var subList: MutableList<Materie> = db.materieDAO().getSubjectByProfAndSubject("Analisi I", "Tarantello")
+        var subList: MutableList<Materie> = db.materieDao().getSubjectByProfAndSubject("Analisi I", "Tarantello")
         for (s in subList) Log.v("S4S", "${s.indice}")
     }
 
     @Test
     fun testGetSubjectBySubject(){
-        var subList: MutableList<Materie> = db.materieDAO().getSubjectBySubject("Analisi II")
+        var subList: MutableList<Materie> = db.materieDao().getSubjectBySubject("Analisi II")
         for (s in subList){
             Log.v("S4S", "${s.prof}")
         }
@@ -41,7 +70,7 @@ class TestDao {
 
     @Test
     fun testGetSubjectByProf(){
-        var subList: MutableList<Materie> = db.materieDAO().getSubjectByProf("Tarantello")
+        var subList: MutableList<Materie> = db.materieDao().getSubjectByProf("Tarantello")
         for (s in subList){
             Log.v("S4S", "${s.materia}")
         }
@@ -49,7 +78,7 @@ class TestDao {
 
     @Test
     fun testGetSubjectsByFaculty(){
-        var subList: MutableList<Materie> = db.materieDAO().getSubjectsByFaculty("Ingegneria")
+        var subList: MutableList<Materie> = db.materieDao().getSubjectsByFaculty("Ingegneria")
         Log.v("S4S", "${subList.size}")
         for (s in subList){
             Log.v("S4S", "${s.materia}")
@@ -58,7 +87,7 @@ class TestDao {
 
     @Test
     fun testGetAllProf(){
-        var profList: MutableList<String> = db.materieDAO().getAllProf()
+        var profList: MutableList<String> = db.materieDao().getAllProf()
         Log.v("S4S", "${profList.size}")
         for (s in profList){
             Log.v("S4S", "${s}")
@@ -67,7 +96,7 @@ class TestDao {
 
     @Test
     fun testGetAllSubjects(){
-        var subList: MutableList<String> = db.materieDAO().getAllSubjects()
+        var subList: MutableList<String> = db.materieDao().getAllSubjects()
         Log.v("S4S", "${subList.size}")
         for (s in subList){
             Log.v("S4S", "${s}")
@@ -76,7 +105,7 @@ class TestDao {
 
     @Test
     fun testGetAllFaculties(){
-        var facList: MutableList<String> = db.materieDAO().getAllFaculties()
+        var facList: MutableList<String> = db.materieDao().getAllFaculties()
         Log.v("S4S", "${facList.size}")
         for (s in facList){
             Log.v("S4S", "${s}")
