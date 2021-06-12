@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import it.skotlinyard.scan4students.control.LoginController
+import it.skotlinyard.scan4students.controller.LoginController
 import it.skotlinyard.scan4students.databinding.ActivityMainBinding
 import it.skotlinyard.scan4students.databinding.ActivityMainBinding.*
 //This is the login activity, set as the main activity. Every time the app is launched, users have to login

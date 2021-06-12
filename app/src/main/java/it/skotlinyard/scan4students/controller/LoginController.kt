@@ -1,4 +1,4 @@
-package it.skotlinyard.scan4students.control
+package it.skotlinyard.scan4students.controller
 
 
 import android.content.Context
