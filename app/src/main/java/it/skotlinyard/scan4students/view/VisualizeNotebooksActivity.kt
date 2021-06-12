@@ -57,7 +57,7 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
             //get all NOtebooks from storage
             TODO("Funzione che restituisce la lista dei quaderni dato il nome")
             //set adapter to recycler
-          //  imageRecycler?.adapter= ImageAdapter(this, allPictures!!)
+       //     imageRecycler?.adapter= ImageAdapter(this, allPictures!!)
             progressBar?.visibility= View.GONE
         }
     }
