@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.skotlinyard.scan4students.databinding.ActivityHomeBinding
+import it.skotlinyard.scan4students.utils.Session
 
 class HomeActivity: AppCompatActivity() {
 
@@ -21,6 +22,7 @@ class HomeActivity: AppCompatActivity() {
         }
         binding.profileButton.setOnClickListener{
             val intent= Intent(this, UserProfileActivity::class.java)
+            intent.putExtra("user", Session.getCurrUsername())
             startActivity(intent)
         }
         binding.myNotebookButton.setOnClickListener{
