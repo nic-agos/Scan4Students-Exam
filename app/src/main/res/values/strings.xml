@@ -21,7 +21,9 @@
     <string name="profile_icon">profile icon</string>
     <string name="search">Cerca</string>
     <string name="motto">Carica e Condividi i tuoi appunti con gli altri utenti, oppure cerca gli appunti degli altri. Migliora il tuo studio!</string>
-
+    <string name="empty_entry">Sembra tu non abbia riempito tutti i campi</string>
+    <string name="internal_error">Ops! Qualcosa è andato storto</string>
+    <string name="psw_error">Password e conferma non corrispondono</string>
     <string name="looking_for">Cosa vuoi cercare?</string>
     <string name="notebook">Quaderno</string>
     <string name="user">Utente</string>

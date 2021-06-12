@@ -9,9 +9,11 @@ import it.skotlinyard.scan4students.databinding.ActivityMainBinding
 import it.skotlinyard.scan4students.databinding.ActivityMainBinding.*
 //This is the login activity, set as the main activity. Every time the app is launched, users have to login
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
 
     private var controller = LoginController(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = inflate(layoutInflater)

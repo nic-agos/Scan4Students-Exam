@@ -41,7 +41,8 @@
                 android:ems="10"
                 android:hint="@string/title"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:maxLength="75" />
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>

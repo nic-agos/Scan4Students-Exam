@@ -14,11 +14,12 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/name"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:maxLength="50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/surname"
@@ -27,11 +28,12 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/surname"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:maxLength="50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
         android:id="@+id/username"
@@ -40,11 +42,12 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/username"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:maxLength="50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surname"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/surname" />
 
     <EditText
         android:id="@+id/pswEntry"
@@ -53,11 +56,12 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/password"
+        android:importantForAutofill="no"
         android:inputType="textPassword"
+        android:maxLength="50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <EditText
         android:id="@+id/pswConfirm"
@@ -66,11 +70,12 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/password_confirm"
+        android:importantForAutofill="no"
         android:inputType="textPassword"
+        android:maxLength="50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pswEntry"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/pswEntry" />
 
     <DatePicker
         android:id="@+id/birthday"
@@ -83,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@+id/pswConfirm" />
 
     <EditText
-        android:id="@+id/collegeYear"
+        android:id="@+id/college"
         android:layout_width="305dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -91,6 +96,7 @@
         android:hint="@string/college"
         android:importantForAutofill="no"
         android:inputType="number"
+        android:maxLength="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/birthday" />
@@ -105,7 +111,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/collegeYear">
+        app:layout_constraintTop_toBottomOf="@+id/college">
 
         <RadioButton
             android:id="@+id/male"
