@@ -12,13 +12,13 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private var controller = LoginController(this)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
+
+        val controller = LoginController(this)
 
         binding.registrationBtn.setOnClickListener{
             val intent= Intent(this, RegistrationActivity::class.java)

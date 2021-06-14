@@ -13,8 +13,7 @@ import it.skotlinyard.scan4students.databinding.ActivityRegistrationBinding
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding
     private lateinit var gender: String
-
-    private var controller = RegistrationController(this)
+    private lateinit var controller: RegistrationController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,16 +21,18 @@ class RegistrationActivity : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.registration)
         setContentView(binding.root)
 
+        controller = RegistrationController(this)
+
         binding.regBtn.setOnClickListener {
             //psw and confirm psw are the same?
 
 
-            if (binding.name.text.toString().isNullOrBlank() || binding.surname.text.toString()
-                    .isNullOrBlank() ||
-                binding.username.text.toString().isNullOrBlank() || binding.pswEntry.text.toString()
-                    .isNullOrBlank() ||
+            if (binding.name.text.toString().isBlank() || binding.surname.text.toString()
+                    .isBlank() ||
+                binding.username.text.toString().isBlank() || binding.pswEntry.text.toString()
+                    .isBlank() ||
                 binding.pswConfirm.text.toString()
-                    .isNullOrBlank() || binding.college.text.toString().isNullOrBlank()
+                    .isBlank() || binding.college.text.toString().isBlank()
             ) {
                 Toast.makeText(this, R.string.empty_entry, Toast.LENGTH_LONG).show()
             }
@@ -80,7 +81,7 @@ class RegistrationActivity : AppCompatActivity() {
         college:String,
         gender: String)
         : Boolean {
-        var formattedBirthday = birthday[0].toString()+"/"+birthday[1].toString()+"/"+birthday[2].toString()
+        val formattedBirthday = birthday[0].toString()+"/"+birthday[1].toString()+"/"+birthday[2].toString()
 
         return controller.regUser(name,surname,username,pswEntry,formattedBirthday,college,gender)
     }

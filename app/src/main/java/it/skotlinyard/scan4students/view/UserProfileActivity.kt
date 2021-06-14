@@ -3,7 +3,7 @@ package it.skotlinyard.scan4students.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import it.skotlinyard.scan4students.controller.UserProfileController
+import it.skotlinyard.scan4students.controller.UserController
 import it.skotlinyard.scan4students.databinding.ActivityUserProfileBinding
 
 class UserProfileActivity : AppCompatActivity() {
@@ -18,7 +18,7 @@ class UserProfileActivity : AppCompatActivity() {
 
         uname = intent.getStringExtra("user").toString()
 
-        val controller =  UserProfileController(this,uname)
+        val controller =  UserController(this,uname)
 
         binding.usernameField.text = uname
         binding.birthdayText.text = controller.getBirthday()

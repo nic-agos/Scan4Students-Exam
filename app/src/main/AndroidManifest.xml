@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scan4StudentsEx">
-        <activity android:name=".view.CreateNotebookActivity"></activity>
+        <activity android:name=".view.CreateNotebookActivity" />
         <activity android:name=".view.StatsActivity" />
         <activity android:name=".view.UserProfileActivity" />
         <activity android:name=".view.MainActivity">

@@ -4,7 +4,7 @@ import android.content.Context
 import it.skotlinyard.scan4students.model.persistence.DbScan4Students
 import it.skotlinyard.scan4students.model.persistence.Studenti
 
-class UserProfileController(context: Context, username: String) {
+class UserController(context: Context, username: String) {
     private val db = DbScan4Students.getInstance(context)
     private val uname=username
     private val stud: Studenti = db.studentiDao().getStudent(username)
@@ -23,6 +23,9 @@ class UserProfileController(context: Context, username: String) {
 
     fun getCollege(): String {
         return stud.universita
+    }
+    fun getStudent(): Studenti {
+        return stud
     }
 
 
