@@ -26,6 +26,7 @@ class RegistrationController(context: Context) {
         stud.universita=college
         stud.sesso=gender
 
+        TODO("Add try catch to get exception")
         db.studentiDao().insertStudent(stud)
 
         return true

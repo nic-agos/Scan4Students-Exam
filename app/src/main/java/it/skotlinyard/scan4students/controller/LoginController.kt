@@ -14,6 +14,7 @@ class LoginController(context: Context) {
     private var db = DbScan4Students.getInstance(context)
     private lateinit var stud: Studenti
     private var hashUtil = Hashing()
+
     fun verifyCredentials(uname: String, psw: String): Boolean{
         //hashing the password
         val hashed = hashUtil.md5(psw)

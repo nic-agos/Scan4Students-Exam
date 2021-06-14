@@ -21,7 +21,7 @@ class UserProfileController(context: Context, username: String) {
         return stud.dataDiNascita
     }
 
-    fun getCollege(): String{
+    fun getCollege(): String {
         return stud.universita
     }
 

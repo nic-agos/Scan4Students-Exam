@@ -12,7 +12,7 @@ class Test2Dao {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         var db = DbScan4Students.getInstance(context)
 
-        var studente = Studenti("username2","psw","lollo","amo","09/06/1999","M","ingegneria")
+        var studente = Studenti("username3","psw","lollo","amo","09/06/1999","M","ingegneria")
         db.studentiDao().insertStudent(studente)
 
 
