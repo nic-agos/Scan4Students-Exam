@@ -14,6 +14,7 @@ import it.skotlinyard.scan4students.model.ImageAdapter
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.databinding.ActivityVisualizeNotebooksBinding
 
+/*
 class VisualizeNotebooksActivity : AppCompatActivity() {
 
     private var imageRecycler: RecyclerView?=null
@@ -62,3 +63,7 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
         }
     }
 }
+
+
+
+ */
