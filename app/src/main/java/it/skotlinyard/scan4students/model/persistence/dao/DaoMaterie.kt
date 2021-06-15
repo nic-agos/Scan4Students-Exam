@@ -16,7 +16,16 @@ interface DaoMaterie {
     fun deleteSubject(indice: Int)
 
     @Query("SELECT * FROM Materie WHERE materia= :materia AND prof = :prof")
-    fun getSubjectByProfAndSubject(materia: String, prof: String): MutableList<Materie>
+    fun getSubjectByProfAndSubject(prof: String, materia: String): MutableList<Materie>
+
+    @Query("SELECT * FROM Materie WHERE materia= :materia AND prof = :prof AND facolta = :facolta")
+    fun getSubjectByProfAndSubjectAndFaculty(prof: String, materia: String, facolta: String): MutableList<Materie>
+
+    @Query("SELECT * FROM Materie WHERE facolta = :facolta AND prof = :prof")
+    fun getSubjectByProfAndFaculty(prof: String, facolta: String): MutableList<Materie>
+
+    @Query("SELECT * FROM Materie WHERE facolta = :facolta AND materia = :materia")
+    fun getSubjectBySubjectAndFaculty(materia: String, facolta: String): MutableList<Materie>
 
     @Query("SELECT * FROM Materie WHERE materia = :materia")
     fun getSubjectBySubject(materia: String): MutableList<Materie>

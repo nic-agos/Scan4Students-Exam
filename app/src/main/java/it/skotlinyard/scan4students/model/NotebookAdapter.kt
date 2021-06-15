@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.model.persistence.Quaderni
-
+/*
 class NotebookAdapter(private var context: Context, private var notebooksList: ArrayList<Quaderni>) :
     RecyclerView.Adapter<NotebookAdapter.NotebookViewHolder>() {
 
@@ -51,4 +51,9 @@ class NotebookAdapter(private var context: Context, private var notebooksList: A
     override fun getItemCount(): Int {
         return notebooksList.size
     }
+
+
 }
+
+ */
+
