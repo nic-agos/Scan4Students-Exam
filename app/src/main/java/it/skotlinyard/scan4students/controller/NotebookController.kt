@@ -17,7 +17,7 @@ class NotebookController(context: Context) {
         var resList = mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
         Log.v("S4S", "prima")
-        CoroutineScope(Dispatchers.IO).launch {
+
             Log.v("S4S", "dopo")
             var subList = db.materieDao().getSubjectBySubject(subject)
             Log.v("S4S", "dopo ancora")
@@ -27,10 +27,7 @@ class NotebookController(context: Context) {
                     resList.addAll(quadList)
                 }
             }
-        }
-        CoroutineScope(Dispatchers.Main).launch{
 
-        }
         return resList
     }
 

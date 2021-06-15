@@ -13,9 +13,9 @@ class TestController {
     fun testSearchNotebooksBySubject(){
         var contr = NotebookController(context)
         var list = contr.searchNotebooksBySubject("Analisi II")
-        //Log.v("S4S", "${list.size}")
+        Log.v("S4S", "${list.size}")
         for (i in list){
-            //Log.v("S4S", "${i.titolo}")
+            Log.v("S4S", "${i.titolo}")
         }
     }
 }
