@@ -9,7 +9,7 @@ import it.skotlinyard.scan4students.model.persistence.Studenti
 interface DaoStudenti {
 
     @Insert
-    fun insertStudent(student: Studenti)
+    fun insertStudent(student: Studenti): Long
 
     @Query("DELETE FROM Studenti WHERE username = :username")
     fun deleteStudent(username: String)

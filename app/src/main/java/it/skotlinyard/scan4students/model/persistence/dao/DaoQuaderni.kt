@@ -8,7 +8,7 @@ import it.skotlinyard.scan4students.model.persistence.Quaderni
 @Dao
 interface DaoQuaderni {
     @Insert
-    fun insertNotebook(notebook: Quaderni)
+    fun insertNotebook(notebook: Quaderni): Long
 
     @Query("DELETE FROM Quaderni WHERE indice = :notebookId")
     fun deleteNotebook(notebookId: Int)

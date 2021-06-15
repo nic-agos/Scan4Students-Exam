@@ -1,6 +1,7 @@
 package it.skotlinyard.scan4students.controller
 
 import android.content.Context
+import android.util.Log
 import it.skotlinyard.scan4students.model.persistence.DbScan4Students
 import it.skotlinyard.scan4students.model.persistence.Quaderni
 import kotlinx.coroutines.CoroutineScope
@@ -11,11 +12,15 @@ import javax.security.auth.Subject
 class NotebookController(context: Context) {
     private val db = DbScan4Students.getInstance(context)
 
+
     fun searchNotebooksBySubject(subject: String): MutableList<Quaderni>{
-        lateinit var resList: MutableList<Quaderni>
+        var resList = mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
+        Log.v("S4S", "prima")
         CoroutineScope(Dispatchers.IO).launch {
+            Log.v("S4S", "dopo")
             var subList = db.materieDao().getSubjectBySubject(subject)
+            Log.v("S4S", "dopo ancora")
             for (item in subList){
                 quadList = db.quaderniDao().getPublicNotebooksBySubject(item.indice)
                 if (!quadList.isEmpty()){
@@ -23,11 +28,14 @@ class NotebookController(context: Context) {
                 }
             }
         }
+        CoroutineScope(Dispatchers.Main).launch{
+
+        }
         return resList
     }
 
     fun searchNotebooksByProf(prof: String): MutableList<Quaderni>{
-        lateinit var resList: MutableList<Quaderni>
+        var resList = mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
         CoroutineScope(Dispatchers.IO).launch {
             var subList = db.materieDao().getSubjectByProf(prof)
@@ -42,7 +50,7 @@ class NotebookController(context: Context) {
     }
 
     fun searchNotebooksByFaculty(faculty: String): MutableList<Quaderni>{
-        lateinit var resList: MutableList<Quaderni>
+        var resList = mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
         CoroutineScope(Dispatchers.IO).launch {
             var subList = db.materieDao().getSubjectsByFaculty(faculty)
@@ -57,7 +65,7 @@ class NotebookController(context: Context) {
     }
 
     fun searchNotebooksByProfAndSubject(prof: String, subject: String): MutableList<Quaderni>{
-        lateinit var resList: MutableList<Quaderni>
+        var resList = mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
         CoroutineScope(Dispatchers.IO).launch {
             var subList = db.materieDao().getSubjectByProfAndSubject(prof, subject)
@@ -72,7 +80,7 @@ class NotebookController(context: Context) {
     }
 
     fun searchNotebooksByProfAndSubjectAndFaculty(prof: String, subject: String, faculty: String): MutableList<Quaderni>{
-        lateinit var resList: MutableList<Quaderni>
+        var resList = mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
         CoroutineScope(Dispatchers.IO).launch {
             var subList = db.materieDao().getSubjectByProfAndSubjectAndFaculty(prof, subject, faculty)
@@ -87,7 +95,7 @@ class NotebookController(context: Context) {
     }
 
     fun searchNotebooksByProfAndFaculty(prof: String, faculty: String): MutableList<Quaderni>{
-        lateinit var resList: MutableList<Quaderni>
+        var resList = mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
         CoroutineScope(Dispatchers.IO).launch {
             var subList = db.materieDao().getSubjectByProfAndFaculty(prof, faculty)
@@ -102,7 +110,7 @@ class NotebookController(context: Context) {
     }
 
     fun searchNotebooksBySubjectAndFaculty(subject: String, faculty: String): MutableList<Quaderni>{
-        lateinit var resList: MutableList<Quaderni>
+        var resList = mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
         CoroutineScope(Dispatchers.IO).launch {
             var subList = db.materieDao().getSubjectBySubjectAndFaculty(subject, faculty)
