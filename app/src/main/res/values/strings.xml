@@ -24,6 +24,7 @@
     <string name="empty_entry">Sembra tu non abbia riempito tutti i campi</string>
     <string name="internal_error">Ops! Qualcosa è andato storto</string>
     <string name="psw_error">Password e conferma non corrispondono</string>
+    <string name="search_error">Impossibile completare la ricerca</string>
     <string name="looking_for">Cosa vuoi cercare?</string>
     <string name="notebook">Quaderno</string>
     <string name="user">Utente</string>

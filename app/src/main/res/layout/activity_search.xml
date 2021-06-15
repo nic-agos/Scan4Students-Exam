@@ -24,7 +24,7 @@
         app:srcCompat="@drawable/logos4s" />
 
     <Button
-        android:id="@+id/searchButton"
+        android:id="@+id/searchButtonUser"
         android:layout_width="96dp"
         android:layout_height="52dp"
         android:layout_marginTop="8dp"
@@ -135,7 +135,7 @@
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <Button
-        android:id="@+id/searchButton2"
+        android:id="@+id/searchButtonNote"
         android:layout_width="96dp"
         android:layout_height="52dp"
         android:layout_marginTop="10dp"
