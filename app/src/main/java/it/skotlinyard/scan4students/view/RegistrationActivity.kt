@@ -2,11 +2,13 @@ package it.skotlinyard.scan4students.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.controller.RegistrationController
 import it.skotlinyard.scan4students.databinding.ActivityRegistrationBinding
+import it.skotlinyard.scan4students.utils.SpinnerGetter
 
 // Username, password, nome, cognome, data di nascita, sesso, anno di iscrizione all'università
 
@@ -22,6 +24,11 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         controller = RegistrationController(this)
+        val getter = SpinnerGetter(this)
+
+        val colleges = getter.getCollegesList()
+        val adapter = ArrayAdapter(this,android.R.layout.simple_expandable_list_item_1,colleges)
+        binding.college.setAdapter(adapter)
 
         binding.regBtn.setOnClickListener {
             //psw and confirm psw are the same?

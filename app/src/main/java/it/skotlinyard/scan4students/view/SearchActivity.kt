@@ -2,11 +2,12 @@ package it.skotlinyard.scan4students.view
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.skotlinyard.scan4students.R
-import it.skotlinyard.scan4students.databinding.ActivityCameraBinding
 import it.skotlinyard.scan4students.databinding.ActivitySearchBinding
+import it.skotlinyard.scan4students.utils.SpinnerGetter
 
 class SearchActivity: AppCompatActivity() {
 
@@ -16,6 +17,24 @@ class SearchActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val getter = SpinnerGetter(this)
+
+        val professorArray = getter.getAllProfs()
+        val subjectArray = getter.getAllSubs()
+        val facultyArray = getter.getAllFaculties()
+
+        val profAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,professorArray)
+        val subAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,subjectArray)
+        val facAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,facultyArray)
+
+        profAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        facAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        binding.subjectSpinner.adapter = subAdapter
+        binding.professorSpinner.adapter = profAdapter
+        binding.facultySpinner.adapter = facAdapter
+
 
 
 

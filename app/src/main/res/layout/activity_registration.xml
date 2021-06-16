@@ -87,11 +87,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pswConfirm" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/college"
         android:layout_width="305dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:ems="10"
         android:hint="@string/college"
         android:importantForAutofill="no"
