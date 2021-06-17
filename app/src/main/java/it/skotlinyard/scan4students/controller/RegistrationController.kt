@@ -13,12 +13,8 @@ class RegistrationController(context: Context) {
     fun regUser(stud: Studenti): Boolean{
 
         try {
-            var res = db.studentiDao().insertStudent(stud)
+            val res = db.studentiDao().insertStudent(stud)
             Log.v("S4S", "$res")
-            if (res.toInt() != 1){
-                Log.v("S4S", "Username duplicate")
-                return false
-            }
             return true
         }catch (e: SQLException){
             return false
