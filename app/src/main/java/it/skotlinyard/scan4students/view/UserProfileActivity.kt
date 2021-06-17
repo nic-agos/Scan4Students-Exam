@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import it.skotlinyard.scan4students.controller.UserController
 import it.skotlinyard.scan4students.databinding.ActivityUserProfileBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class UserProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserProfileBinding
@@ -18,7 +21,11 @@ class UserProfileActivity : AppCompatActivity() {
 
         uname = intent.getStringExtra("user").toString()
 
-        val controller =  UserController(this,uname)
+        val controller =  UserController(this)
+
+        CoroutineScope(Dispatchers.IO).launch {
+
+        }
 
         binding.usernameField.text = uname
         binding.birthdayText.text = controller.getBirthday()

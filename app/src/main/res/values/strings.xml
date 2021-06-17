@@ -40,6 +40,7 @@
     <string name="public_">Pubblico</string>
     <string name="prof_n_sub">Professore e Materia</string>
     <string name="create_notebook">Crea Quaderno</string>
+    <string name="wrong_credential">Username o Password errate</string>
 
     <string-array name="materie_prova">
         <item>Analisi 1</item>
