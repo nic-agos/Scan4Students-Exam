@@ -34,9 +34,9 @@ class HomeActivity: AppCompatActivity() {
         }
         binding.myNotebookButton.setOnClickListener{
         //TODO add notebook view and intent here.
-        /*val intent= Intent(this, ????::class.java)
-            startActivity(intent)*/
-            Toast.makeText(this, "work in progress", Toast.LENGTH_LONG).show()
+        val intent= Intent(this, CreateNotebookActivity::class.java)
+            startActivity(intent)
+         //   Toast.makeText(this, "work in progress", Toast.LENGTH_LONG).show()
         }
     }
 
