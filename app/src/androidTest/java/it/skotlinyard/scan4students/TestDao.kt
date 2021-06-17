@@ -12,18 +12,18 @@ class TestDao {
     val context = InstrumentationRegistry.getInstrumentation().targetContext
     val db = DbScan4Students.getInstance(context)
 
-
-    /*
-
-    // test DaoUniversita
     @Test
-    fun testGetAllUniversitiesOrderByName(){
-        var uni: MutableList<Universita> = db.universitaDao().getAllUniversitiesOrderByName()
+    fun testGetAllUniversitiesOrderByRegion(){
+        var uni: MutableList<Universita> = db.universitaDao().getAllUniversitiesOrderByRegion()
         for (u in uni){
             Log.v("S4S", "${u.nome}" )
         }
 
     }
+    /*
+
+    // test DaoUniversita
+
 
     @Test
     fun testGetAllUniversitiesOrderByRegion(){
