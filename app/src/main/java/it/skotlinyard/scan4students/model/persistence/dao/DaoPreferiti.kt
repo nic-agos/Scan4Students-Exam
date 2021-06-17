@@ -10,7 +10,7 @@ import it.skotlinyard.scan4students.model.persistence.Preferiti
 interface DaoPreferiti {
 
     @Insert
-    fun addFavourite(favourite: Preferiti)
+    fun addFavourite(favourite: Preferiti): Long
 
     @Query("DELETE FROM Preferiti WHERE utente = :user AND quadPref = :favNotebook")
     fun removeFavourite(user: String, favNotebook: Int)

@@ -6,7 +6,7 @@ import it.skotlinyard.scan4students.model.persistence.Studenti
 
 class UserController(context: Context, username: String) {
     private val db = DbScan4Students.getInstance(context)
-    private val uname=username
+    private val uname = username
     private val stud: Studenti = db.studentiDao().getStudent(username)
 
     fun getNotebooksCount(): Int{

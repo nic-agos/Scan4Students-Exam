@@ -2,13 +2,13 @@ package it.skotlinyard.scan4students.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.controller.RegistrationController
 import it.skotlinyard.scan4students.databinding.ActivityRegistrationBinding
-import it.skotlinyard.scan4students.utils.SpinnerGetter
+import it.skotlinyard.scan4students.model.persistence.Studenti
+import it.skotlinyard.scan4students.utils.Hashing
 
 // Username, password, nome, cognome, data di nascita, sesso, anno di iscrizione all'università
 
@@ -24,11 +24,6 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         controller = RegistrationController(this)
-        val getter = SpinnerGetter(this)
-
-        val colleges = getter.getCollegesList()
-        val adapter = ArrayAdapter(this,android.R.layout.simple_expandable_list_item_1,colleges)
-        binding.college.setAdapter(adapter)
 
         binding.regBtn.setOnClickListener {
             //psw and confirm psw are the same?
@@ -58,7 +53,7 @@ class RegistrationActivity : AppCompatActivity() {
                         binding.birthday.month,
                         binding.birthday.year
                     )
-                val bool = syntaxControl(
+                val student = syntaxControl(
                     binding.name.text.toString(),
                     binding.surname.text.toString(),
                     binding.username.text.toString(),
@@ -67,6 +62,7 @@ class RegistrationActivity : AppCompatActivity() {
                     binding.college.text.toString(),
                     gender
                 )
+                    var bool = controller.regUser(student)
                 if (bool) {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
@@ -86,11 +82,14 @@ class RegistrationActivity : AppCompatActivity() {
         pswEntry: String,
         birthday: Array<Int>,
         college:String,
-        gender: String)
-        : Boolean {
+        gender: String): Studenti {
+        var hashUtil = Hashing()
         val formattedBirthday = birthday[0].toString()+"/"+birthday[1].toString()+"/"+birthday[2].toString()
+        var pswHashed = hashUtil.md5(pswEntry)
+        // hashare password
 
-        return controller.regUser(name,surname,username,pswEntry,formattedBirthday,college,gender)
+        val stud = Studenti(username, pswHashed, name, surname, formattedBirthday, gender, college)
+        return stud
     }
 
 }

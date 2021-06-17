@@ -9,7 +9,7 @@ import it.skotlinyard.scan4students.model.persistence.Pagine
 interface DaoPagine {
 
     @Insert
-    fun insertPage(pagina: Pagine)
+    fun insertPage(pagina: Pagine): Long
 
     @Query("DELETE FROM Pagine WHERE indice = :index")
     fun deletePage(index: Int)
