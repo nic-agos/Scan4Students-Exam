@@ -16,4 +16,7 @@ interface DaoUniversita {
 
     @Query("SELECT * FROM Universita")
     fun getAllUniversities(): MutableList<Universita>
+
+    @Query("SELECT * FROM Universita WHERE nome = :name")
+    fun getUniversityByName(name: String): Universita
 }

@@ -23,7 +23,7 @@ class UserProfileActivity : AppCompatActivity() {
         binding.usernameField.text = uname
         binding.birthdayText.text = controller.getBirthday()
         binding.nameSurname.text = controller.getFullName()
-        binding.notebookLabel.text = controller.getNotebooksCount().toString()
+        binding.notebookLabel.text = controller.getNotebooksCount(uname).toString()
 
         binding.statsBtn.setOnClickListener{
             val intent = Intent(this, StatsActivity::class.java)
