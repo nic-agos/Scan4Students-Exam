@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity() {
             //get username and psw, send them to the controller to verify
             hideKeyboard()
             CoroutineScope(Dispatchers.IO).launch {
-                Looper.prepare()
                 Log.v("S4S", "entrato nella coroutine")
                 bool = controller.verifyCredentials(binding.email.text.toString(),binding.psw.text.toString())
                 Log.v("S4S", "valore di bool dopo il db $bool")

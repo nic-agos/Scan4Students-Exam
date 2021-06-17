@@ -16,7 +16,7 @@ class UserController(context: Context) {
 
     fun getStudent(username: String): Studenti?{
         try {
-            var studente = db.studentiDao().getStudent(username)
+            val studente = db.studentiDao().getStudent(username)
             if(studente != null){
                 Log.v("S4S", "Utente trovato")
                 return studente
@@ -33,26 +33,10 @@ class UserController(context: Context) {
 
     }
 
-
     fun getNotebooksCount(username: String): Int{
-        CoroutineScope(Dispatchers.IO).launch {
-            var count = db.quaderniDao().getPublicNotebooksByUser(username).size
-        }
-        return 0
+        val count = db.quaderniDao().getPublicNotebooksByUser(username).size
+        return count
     }
-
-    fun getFullName(): String{
-       return stud.nome + stud.cognome
-    }
-
-    fun getBirthday(): String{
-        return stud.dataDiNascita
-    }
-
-    fun getCollegeName(): String {
-        return stud.universita
-    }
-
     /*
     fun getCollegeAcronym(uName: String): String {
         var university: Universita
