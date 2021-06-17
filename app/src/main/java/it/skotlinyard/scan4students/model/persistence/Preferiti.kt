@@ -7,4 +7,7 @@ import androidx.room.PrimaryKey
 data class Preferiti (
     @PrimaryKey (autoGenerate = true) var indice: Int,
     var utente: String,
-    var quadPref: Int)
+    var quadPref: Int){
+    constructor(user: String, favNotebook: Int) : this (0, user, favNotebook)
+
+}
