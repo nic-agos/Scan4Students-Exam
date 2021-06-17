@@ -10,6 +10,13 @@ import it.skotlinyard.scan4students.utils.Session
 class HomeActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+    override fun onBackPressed() {
+        Session.setLogged(false)
+        Session.setCurrUsername("")
+        val intent= Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -32,4 +39,6 @@ class HomeActivity: AppCompatActivity() {
             Toast.makeText(this, "work in progress", Toast.LENGTH_LONG).show()
         }
     }
+
+
 }
