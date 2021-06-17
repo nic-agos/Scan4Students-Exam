@@ -59,12 +59,10 @@ class SearchController(context: Context) {
         lateinit var resList: MutableList<Quaderni>
         var quadList: MutableList<Quaderni>
         CoroutineScope(Dispatchers.IO).launch {
-            var subList = db.materieDao().getSubjectByProfAndSubject(prof, subject)
-            for (item in subList){
-                quadList = db.quaderniDao().getPublicNotebooksBySubject(item.indice)
-                if (!quadList.isEmpty()){
-                    resList.addAll(quadList)
-                }
+            var materia = db.materieDao().getSubjectByProfAndSubject(prof, subject)
+            quadList = db.quaderniDao().getPublicNotebooksBySubject(materia.indice)
+            if (!quadList.isEmpty()){
+                resList.addAll(quadList)
             }
         }
         return resList

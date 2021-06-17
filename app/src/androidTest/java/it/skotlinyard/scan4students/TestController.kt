@@ -8,7 +8,7 @@ import org.junit.Test
 class TestController {
 
     val context = InstrumentationRegistry.getInstrumentation().targetContext
-
+/*
     @Test
     fun testSearchNotebooksBySubject(){
         var contr = NotebookController(context)
@@ -17,5 +17,5 @@ class TestController {
         for (i in list){
             Log.v("S4S", "${i.titolo}")
         }
-    }
+    }*/
 }

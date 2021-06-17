@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
     android:layout_gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".view.CreateNotebookActivity">
@@ -35,7 +36,7 @@
             <EditText
                 android:id="@+id/entryTitle"
                 android:layout_width="381dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="6dp"
                 android:ems="10"
@@ -59,7 +60,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_weight="1"
         app:cardBackgroundColor="@color/design_default_color_background"
@@ -77,16 +78,17 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_weight="1"
+                android:checkedButton="@id/privateRadio"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/privateRadio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/private_" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/publicRadio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/public_" />
@@ -116,31 +118,25 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="5dp">
 
             <Spinner
                 android:id="@+id/profSpinner"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true" />
 
             <Spinner
 
                 android:id="@+id/subSpinner"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/profSpinner" />
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="313dp"
-        android:visibility="invisible" />
 
     <Button
         android:id="@+id/createBtn"

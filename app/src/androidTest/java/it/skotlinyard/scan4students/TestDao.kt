@@ -13,11 +13,9 @@ class TestDao {
     val db = DbScan4Students.getInstance(context)
 
     @Test
-    fun testGetAllUniversitiesOrderByRegion(){
-        var uni: MutableList<Universita> = db.universitaDao().getAllUniversitiesOrderByRegion()
-        for (u in uni){
-            Log.v("S4S", "${u.nome}" )
-        }
+    fun testInsertSubject(){
+        var mat = Materie("Ingegneria", "Analisi II", "Perfetti", 6, 2, 1)
+        db.materieDao().insertSubject(mat)
 
     }
     /*
