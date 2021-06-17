@@ -1,16 +1,23 @@
 package it.skotlinyard.scan4students.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Looper
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.controller.RegistrationController
 import it.skotlinyard.scan4students.databinding.ActivityRegistrationBinding
+import it.skotlinyard.scan4students.model.persistence.Studenti
+import it.skotlinyard.scan4students.utils.Hashing
 import it.skotlinyard.scan4students.utils.SpinnerGetter
-
-// Username, password, nome, cognome, data di nascita, sesso, anno di iscrizione all'università
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding
@@ -23,17 +30,35 @@ class RegistrationActivity : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.registration)
         setContentView(binding.root)
 
-        controller = RegistrationController(this)
-        val getter = SpinnerGetter(this)
+        val context = this.applicationContext
+        //val getter = SpinnerGetter(context)
+        controller = RegistrationController(context)
+         /*
+        var colleges: ArrayList<String> by Delegates.observable(ArrayList()){ property, oldValue, newValue ->
+            val adapter = ArrayAdapter(context,android.R.layout.simple_expandable_list_item_1,newValue)
+            binding.college.setAdapter(adapter)
+            Log.v("S4S","colleges attached to autoCompleteTextView")
+            Log.v("S4S","Observer: ${newValue[10]}")
+        }
+        CoroutineScope(Dispatchers.IO).launch{
+            Looper.prepare()
+            colleges = getter.getCollegesList()
+            Log.v("S4S","all colleges downloaded")
+            Log.v("S4S","Coroutine: ${colleges[10]}")
+        }    */
 
-        val colleges = getter.getCollegesList()
-        val adapter = ArrayAdapter(this,android.R.layout.simple_expandable_list_item_1,colleges)
-        binding.college.setAdapter(adapter)
+        var bool: Boolean? by Delegates.observable(null){property, oldValue, newValue ->
+            Log.v("S4S","bool has changed value: $newValue. Previously was: $oldValue")
+            if (newValue == true) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, R.string.internal_error, Toast.LENGTH_LONG).show()
+            }
+        }
 
         binding.regBtn.setOnClickListener {
             //psw and confirm psw are the same?
-
-
             if (binding.name.text.toString().isBlank() || binding.surname.text.toString()
                     .isBlank() ||
                 binding.username.text.toString().isBlank() || binding.pswEntry.text.toString()
@@ -58,7 +83,7 @@ class RegistrationActivity : AppCompatActivity() {
                         binding.birthday.month,
                         binding.birthday.year
                     )
-                val bool = syntaxControl(
+                val student = syntaxControl(
                     binding.name.text.toString(),
                     binding.surname.text.toString(),
                     binding.username.text.toString(),
@@ -67,12 +92,10 @@ class RegistrationActivity : AppCompatActivity() {
                     binding.college.text.toString(),
                     gender
                 )
-                if (bool) {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this, R.string.internal_error, Toast.LENGTH_LONG).show()
-                }
+                    CoroutineScope(Dispatchers.IO).launch {
+                        Log.v("S4S","Thread launched for user registration")
+                        bool = controller.regUser(student)
+                    }
             }
             }
         }
@@ -86,11 +109,13 @@ class RegistrationActivity : AppCompatActivity() {
         pswEntry: String,
         birthday: Array<Int>,
         college:String,
-        gender: String)
-        : Boolean {
+        gender: String): Studenti {
+        val hashUtil = Hashing()
         val formattedBirthday = birthday[0].toString()+"/"+birthday[1].toString()+"/"+birthday[2].toString()
+        val pswHashed = hashUtil.md5(pswEntry)
 
-        return controller.regUser(name,surname,username,pswEntry,formattedBirthday,college,gender)
+        val stud = Studenti(username, pswHashed, name, surname, formattedBirthday, gender, college)
+        return stud
     }
 
 }

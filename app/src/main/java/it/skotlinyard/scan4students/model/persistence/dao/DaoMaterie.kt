@@ -10,7 +10,7 @@ import it.skotlinyard.scan4students.model.persistence.Materie
 interface DaoMaterie {
 
     @Insert
-    fun insertSubject(subject: Materie)
+    fun insertSubject(subject: Materie): Long
 
     @Query("DELETE FROM Materie WHERE indice = :indice")
     fun deleteSubject(indice: Int)
