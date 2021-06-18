@@ -12,17 +12,10 @@ class TestDao {
     val context = InstrumentationRegistry.getInstrumentation().targetContext
     val db = DbScan4Students.getInstance(context)
 
-    @Test
-    fun testInsertSubject(){
-        var mat = Materie("Ingegneria", "Analisi II", "Perfetti", 6, 2, 1)
-        db.materieDao().insertSubject(mat)
 
-    }
     /*
 
     // test DaoUniversita
-
-
     @Test
     fun testGetAllUniversitiesOrderByRegion(){
         var uni: MutableList<Universita> = db.universitaDao().getAllUniversitiesOrderByRegion()
