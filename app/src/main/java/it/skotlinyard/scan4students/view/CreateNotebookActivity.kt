@@ -52,7 +52,8 @@ class CreateNotebookActivity : AppCompatActivity() {
         var bool: Boolean? by Delegates.observable(null) { property, oldValue, newValue ->
             if(newValue==true){
                 //TODO cambiare alla vista dei quaderni personale
-                val intent= Intent(this, HomeActivity::class.java)
+                val intent= Intent(this, UserProfileActivity::class.java)
+                intent.putExtra("user", Session.getCurrUsername())
                 startActivity(intent)
             }
             else
@@ -66,7 +67,7 @@ class CreateNotebookActivity : AppCompatActivity() {
 
         binding.createBtn.setOnClickListener {
 
-            var visibility: String = String()
+            var visibility = String()
             if(binding.privateRadio.isChecked)
                 visibility = "PRIVATE"
             else if(binding.publicRadio.isChecked)
