@@ -13,8 +13,8 @@
 
     <ImageView
         android:id="@+id/ImageView"
-        android:layout_width="153dp"
-        android:layout_height="101dp"
+        android:layout_width="159dp"
+        android:layout_height="138dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:contentDescription="@string/app_logo"
@@ -42,7 +42,7 @@
         android:layout_width="380dp"
         android:layout_height="58dp"
         android:layout_marginTop="16dp"
-        android:hint="@android:string/search_go"
+        android:hint="@string/username"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
