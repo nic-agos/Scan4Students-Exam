@@ -2,6 +2,7 @@ package it.skotlinyard.scan4students.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.controller.SearchController
 import it.skotlinyard.scan4students.databinding.ActivitySearchBinding
+import it.skotlinyard.scan4students.model.persistence.Quaderni
 import it.skotlinyard.scan4students.model.persistence.Studenti
 import it.skotlinyard.scan4students.utils.Session
 import it.skotlinyard.scan4students.utils.SpinnerGetter
@@ -56,6 +58,11 @@ class SearchActivity: AppCompatActivity() {
                 Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
         }
 
+        var resultNotebooks: MutableList<Quaderni>? by Delegates.observable(null){property, oldValue, newValue ->
+            Log.v("S4S","$newValue")
+        }
+
+
         CoroutineScope(Dispatchers.IO).launch{
             professorArray = getter.getAllProfs()
             subjectArray = getter.getAllSubs()
@@ -86,45 +93,76 @@ class SearchActivity: AppCompatActivity() {
         }
 
         binding.searchButtonNote.setOnClickListener {
-            if(binding.subjectSpinner.selectedItem.toString().isBlank()&&
-                binding.facultySpinner.selectedItem.toString().isBlank()&&
-                binding.professorSpinner.selectedItem.toString().isBlank())
+            val sub = binding.subjectSpinner.selectedItem.toString()
+            val fac = binding.facultySpinner.selectedItem.toString()
+            val prof = binding.professorSpinner.selectedItem.toString()
 
 
-            if(binding.subjectSpinner.selectedItem.toString().isNotBlank()&&
-                binding.facultySpinner.selectedItem.toString().isBlank()&&
-                binding.professorSpinner.selectedItem.toString().isBlank()) {
-
+            if(sub.isBlank()&&
+                fac.isBlank()&&
+                prof.isBlank()){
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.getAllNotebooks()
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isBlank()&&
-                binding.facultySpinner.selectedItem.toString().isNotBlank()&&
-                binding.professorSpinner.selectedItem.toString().isBlank()){
 
+            if(sub.isNotBlank()&&
+                fac.isBlank()&&
+                prof.isBlank()) {
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksBySubject(sub)
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isBlank()&&
-                binding.facultySpinner.selectedItem.toString().isBlank()&&
-                binding.professorSpinner.selectedItem.toString().isNotBlank()){
-
+            if(sub.isBlank()&&
+                fac.isNotBlank()&&
+                prof.isBlank()){
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksByFaculty(fac)
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isNotBlank()&&
-                binding.facultySpinner.selectedItem.toString().isNotBlank()&&
-                binding.professorSpinner.selectedItem.toString().isBlank()){
-
+            if(sub.isBlank()&&
+                fac.isBlank()&&
+                prof.isNotBlank()){
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksByProf(prof)
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isNotBlank()&&
-                binding.facultySpinner.selectedItem.toString().isBlank()&&
-                binding.professorSpinner.selectedItem.toString().isNotBlank()) {
-
+            if(sub.isNotBlank()&&
+                fac.isNotBlank()&&
+                prof.isBlank()){
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksBySubjectAndFaculty(
+                        sub,
+                        fac)
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isBlank()&&
-                binding.facultySpinner.selectedItem.toString().isNotBlank()&&
-                binding.professorSpinner.selectedItem.toString().isNotBlank()) {
-
+            if(sub.isNotBlank()&&
+                fac.isBlank()&&
+                prof.isNotBlank()) {
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksByProfAndSubject(
+                        prof,
+                        sub)
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isNotBlank()&&
-                binding.facultySpinner.selectedItem.toString().isNotBlank()&&
-                binding.professorSpinner.selectedItem.toString().isNotBlank()){
-
+            if(sub.isBlank()&&
+                fac.isNotBlank()&&
+                prof.isNotBlank()) {
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksByProfAndFaculty(
+                        prof,
+                        fac)
+                }
+            }
+            if(sub.isNotBlank()&&
+                fac.isNotBlank()&&
+                prof.isNotBlank()){
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksByProfAndSubjectAndFaculty(
+                        prof,
+                        sub,
+                        fac)
+                }
             }
         }
 
@@ -134,5 +172,6 @@ class SearchActivity: AppCompatActivity() {
                 resultUser = controller.searchUserByUsername(username)
             }
         }
+
     }
 }
