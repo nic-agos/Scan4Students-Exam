@@ -16,6 +16,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
@@ -29,8 +32,9 @@ class CreateNotebookActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        val sdf = SimpleDateFormat("dd/M/yyyy")
-        val currentDate = sdf.format(Date())
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+        val date = LocalDate.parse("${LocalDate.now()}")
+        val currentDate = date.format(formatter)
         val controller = NotebookController(this)
 
         val getter = SpinnerGetter(this)
@@ -77,7 +81,7 @@ class CreateNotebookActivity : AppCompatActivity() {
                     val subID = controller.getSubIDByNameAndProf(binding.subSpinner.selectedItem.toString(),
                     binding.profSpinner.selectedItem.toString())
                     val quad = Quaderni(binding.entryTitle.text.toString(),
-                        subID,0, visibility,"ITA", Session.getCurrUsername(),currentDate)
+                        subID,0, visibility,"ITA", Session.getCurrUsername(),currentDate.toString())
                     bool = controller.uploadNotebook(quad)
                 }
             }
