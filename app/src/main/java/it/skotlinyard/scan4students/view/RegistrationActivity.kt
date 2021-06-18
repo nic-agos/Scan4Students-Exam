@@ -80,9 +80,10 @@ class RegistrationActivity : AppCompatActivity() {
                 val birthday =
                     arrayOf(
                         binding.birthday.dayOfMonth,
-                        binding.birthday.month,
+                        binding.birthday.month +1,
                         binding.birthday.year
                     )
+                    Log.v("S4S", "birthday: ${birthday[0]} ${birthday[1]} ${birthday[2]}")
                 val student = syntaxControl(
                     binding.name.text.toString(),
                     binding.surname.text.toString(),
@@ -111,7 +112,8 @@ class RegistrationActivity : AppCompatActivity() {
         college:String,
         gender: String): Studenti {
         val hashUtil = Hashing()
-        val formattedBirthday = birthday[0].toString()+"/"+birthday[1].toString()+"/"+birthday[2].toString()
+        val formattedBirthday = birthday[0].toString()+"-"+birthday[1].toString()+"-"+birthday[2].toString()
+        Log.v("S4S", "formattedBirthday: ${formattedBirthday}")
         val pswHashed = hashUtil.md5(pswEntry)
 
         val stud = Studenti(username, pswHashed, name, surname, formattedBirthday, gender, college)
