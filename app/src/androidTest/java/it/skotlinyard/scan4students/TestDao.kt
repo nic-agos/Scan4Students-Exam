@@ -12,25 +12,10 @@ class TestDao {
     val context = InstrumentationRegistry.getInstrumentation().targetContext
     val db = DbScan4Students.getInstance(context)
 
-    @Test
-    fun testGetPublicNotebooksBySubject(){
-        var quadList: MutableList<Quaderni> = db.quaderniDao().getPublicNotebooksBySubject(2)
-        Log.v("S4S", "${quadList.isEmpty()}")
-    }
 
     /*
 
-
     // test DaoUniversita
-    @Test
-    fun testGetAllUniversitiesOrderByName(){
-        var uni: MutableList<Universita> = db.universitaDao().getAllUniversitiesOrderByName()
-        for (u in uni){
-            Log.v("S4S", "${u.nome}" )
-        }
-
-    }
-
     @Test
     fun testGetAllUniversitiesOrderByRegion(){
         var uni: MutableList<Universita> = db.universitaDao().getAllUniversitiesOrderByRegion()

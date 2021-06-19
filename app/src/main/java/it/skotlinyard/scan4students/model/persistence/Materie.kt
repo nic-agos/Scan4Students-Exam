@@ -14,7 +14,5 @@ data class Materie(
             var anno: Int,
             var semestre: Int){
         constructor(faculty: String, subject: String, professor: String, credits: Int, year: Int, semester: Int)
-                :this(0, faculty, subject, professor, credits, year, semester ){
-
-        }
+                :this(0, faculty, subject, professor, credits, year, semester )
 }

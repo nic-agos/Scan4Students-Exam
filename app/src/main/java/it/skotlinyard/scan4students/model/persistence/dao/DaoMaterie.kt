@@ -10,13 +10,13 @@ import it.skotlinyard.scan4students.model.persistence.Materie
 interface DaoMaterie {
 
     @Insert
-    fun insertSubject(subject: Materie)
+    fun insertSubject(subject: Materie): Long
 
     @Query("DELETE FROM Materie WHERE indice = :indice")
     fun deleteSubject(indice: Int)
 
     @Query("SELECT * FROM Materie WHERE materia= :materia AND prof = :prof")
-    fun getSubjectByProfAndSubject(prof: String, materia: String): MutableList<Materie>
+    fun getSubjectByProfAndSubject(prof: String, materia: String): Materie
 
     @Query("SELECT * FROM Materie WHERE materia= :materia AND prof = :prof AND facolta = :facolta")
     fun getSubjectByProfAndSubjectAndFaculty(prof: String, materia: String, facolta: String): MutableList<Materie>

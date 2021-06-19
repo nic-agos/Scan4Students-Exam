@@ -2,7 +2,7 @@ package it.skotlinyard.scan4students.utils
 
 // to access the session's instance just Session.instance
 object Session {
-    private lateinit var username: String
+    private var username: String = String()
     private var logged: Boolean = false
 
     //add other things that can be needed

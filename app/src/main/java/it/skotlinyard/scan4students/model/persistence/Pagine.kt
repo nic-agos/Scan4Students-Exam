@@ -20,7 +20,5 @@ data class Pagine(
             var numPagina: Int,
             var path: String) {
         constructor(notebook: Int, pageNumber: Int, path: String) :
-                this(0, notebook,pageNumber,path) {
-
-    }
+                this(0, notebook,pageNumber,path)
 }

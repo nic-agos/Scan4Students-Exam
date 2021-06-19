@@ -28,16 +28,7 @@ data class Quaderni(
         var studente: String,
         var dataCaricamento: String) {
         constructor(title: String, subject: Int, pageNumber: Int, visibility: String, language: String, student: String, uploadDate: String):
-                this(0, "",0,0,"","","","") {
-
-                    titolo = title
-                    materia = subject
-                    numeroPagine = pageNumber
-                    visibilita = visibility
-                    lingua = language
-                    studente = student
-                    dataCaricamento = uploadDate
-        }
+                this(0, title,subject,pageNumber,visibility,language,student,uploadDate)
 }
 
 

@@ -1,13 +1,23 @@
 package it.skotlinyard.scan4students.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.skotlinyard.scan4students.R
+import it.skotlinyard.scan4students.controller.SearchController
 import it.skotlinyard.scan4students.databinding.ActivitySearchBinding
+import it.skotlinyard.scan4students.model.persistence.Quaderni
+import it.skotlinyard.scan4students.model.persistence.Studenti
+import it.skotlinyard.scan4students.utils.Session
 import it.skotlinyard.scan4students.utils.SpinnerGetter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 class SearchActivity: AppCompatActivity() {
 
@@ -17,26 +27,47 @@ class SearchActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
+
         val getter = SpinnerGetter(this)
+        val controller = SearchController(this)
 
-        val professorArray = getter.getAllProfs()
-        val subjectArray = getter.getAllSubs()
-        val facultyArray = getter.getAllFaculties()
+        var professorArray: ArrayList<String> by Delegates.observable(ArrayList()){property, oldValue, newValue ->
+            val profAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,newValue)
+            profAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.professorSpinner.adapter = profAdapter
+        }
+        var subjectArray: ArrayList<String> by Delegates.observable(ArrayList()) { property, oldValue, newValue ->
+            val subAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,newValue)
+            subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.subjectSpinner.adapter = subAdapter
+        }
+        var facultyArray: ArrayList<String> by Delegates.observable(ArrayList()) { property, oldValue, newValue ->
+            val facAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,newValue)
+            facAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.facultySpinner.adapter = facAdapter
+        }
 
-        val profAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,professorArray)
-        val subAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,subjectArray)
-        val facAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,facultyArray)
+        var resultUser: Studenti? by Delegates.observable(null){property, oldValue, newValue ->
+            if(newValue!=null){
+            val intent= Intent(this, UserProfileActivity::class.java)
+            intent.putExtra("user", newValue.username)
+            startActivity(intent)
+            }
+            else
+                Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
+        }
 
-        profAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        facAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        binding.subjectSpinner.adapter = subAdapter
-        binding.professorSpinner.adapter = profAdapter
-        binding.facultySpinner.adapter = facAdapter
+        var resultNotebooks: MutableList<Quaderni>? by Delegates.observable(null){property, oldValue, newValue ->
+            Log.v("S4S","$newValue")
+        }
 
 
-
+        CoroutineScope(Dispatchers.IO).launch{
+            professorArray = getter.getAllProfs()
+            subjectArray = getter.getAllSubs()
+            facultyArray = getter.getAllFaculties()
+        }
 
         binding.radioNotebook.setOnClickListener {
             binding.facultySpinner.visibility= View.VISIBLE
@@ -62,50 +93,85 @@ class SearchActivity: AppCompatActivity() {
         }
 
         binding.searchButtonNote.setOnClickListener {
-            if(binding.subjectSpinner.selectedItem.toString().isBlank()&&
-                binding.facultySpinner.selectedItem.toString().isBlank()&&
-                binding.professorSpinner.selectedItem.toString().isBlank())
-                Toast.makeText(this, R.string.search_error , Toast.LENGTH_SHORT).show()
+            val sub = binding.subjectSpinner.selectedItem.toString()
+            val fac = binding.facultySpinner.selectedItem.toString()
+            val prof = binding.professorSpinner.selectedItem.toString()
 
-            if(binding.subjectSpinner.selectedItem.toString().isNotBlank()&&
-                binding.facultySpinner.selectedItem.toString().isBlank()&&
-                binding.professorSpinner.selectedItem.toString().isBlank()) {
 
+            if(sub.isBlank()&&
+                fac.isBlank()&&
+                prof.isBlank()){
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.getAllNotebooks()
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isBlank()&&
-                binding.facultySpinner.selectedItem.toString().isNotBlank()&&
-                binding.professorSpinner.selectedItem.toString().isBlank()){
 
+            if(sub.isNotBlank()&&
+                fac.isBlank()&&
+                prof.isBlank()) {
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksBySubject(sub)
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isBlank()&&
-                binding.facultySpinner.selectedItem.toString().isBlank()&&
-                binding.professorSpinner.selectedItem.toString().isNotBlank()){
-
+            if(sub.isBlank()&&
+                fac.isNotBlank()&&
+                prof.isBlank()){
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksByFaculty(fac)
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isNotBlank()&&
-                binding.facultySpinner.selectedItem.toString().isNotBlank()&&
-                binding.professorSpinner.selectedItem.toString().isBlank()){
-
+            if(sub.isBlank()&&
+                fac.isBlank()&&
+                prof.isNotBlank()){
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksByProf(prof)
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isNotBlank()&&
-                binding.facultySpinner.selectedItem.toString().isBlank()&&
-                binding.professorSpinner.selectedItem.toString().isNotBlank()) {
-
+            if(sub.isNotBlank()&&
+                fac.isNotBlank()&&
+                prof.isBlank()){
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksBySubjectAndFaculty(
+                        sub,
+                        fac)
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isBlank()&&
-                binding.facultySpinner.selectedItem.toString().isNotBlank()&&
-                binding.professorSpinner.selectedItem.toString().isNotBlank()) {
-
+            if(sub.isNotBlank()&&
+                fac.isBlank()&&
+                prof.isNotBlank()) {
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksByProfAndSubject(
+                        prof,
+                        sub)
+                }
             }
-            if(binding.subjectSpinner.selectedItem.toString().isNotBlank()&&
-                binding.facultySpinner.selectedItem.toString().isNotBlank()&&
-                binding.professorSpinner.selectedItem.toString().isNotBlank()){
-
+            if(sub.isBlank()&&
+                fac.isNotBlank()&&
+                prof.isNotBlank()) {
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksByProfAndFaculty(
+                        prof,
+                        fac)
+                }
+            }
+            if(sub.isNotBlank()&&
+                fac.isNotBlank()&&
+                prof.isNotBlank()){
+                CoroutineScope(Dispatchers.IO).launch{
+                    resultNotebooks = controller.searchNotebooksByProfAndSubjectAndFaculty(
+                        prof,
+                        sub,
+                        fac)
+                }
             }
         }
 
         binding.searchButtonUser.setOnClickListener {
-
+            val username = binding.searchBar.text.toString()
+            CoroutineScope(Dispatchers.IO).launch{
+                resultUser = controller.searchUserByUsername(username)
+            }
         }
+
     }
 }
