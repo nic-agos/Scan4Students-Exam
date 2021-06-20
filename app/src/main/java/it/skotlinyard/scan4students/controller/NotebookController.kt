@@ -28,11 +28,15 @@ class NotebookController(context: Context) {
     }
 
     fun getSubIDByNameAndProf(sub: String,prof: String): Int{
-        var materia: Materie
+        val materia: Materie
         try {
             materia = db.materieDao().getSubjectByProfAndSubject(prof,sub)
             Log.v("S4S","sub search good in getSubByID")
-            return materia.indice
+            if (materia != null){
+                return materia.indice
+            }else{
+                return -1
+            }
         }catch (e: SQLException){
             Log.v("S4S","Exception in NotebookController.uploadNotebook")
             return -1
