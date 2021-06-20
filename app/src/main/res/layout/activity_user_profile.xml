@@ -176,6 +176,17 @@
         android:text="@string/my_notebooks">
 
     </com.google.android.material.button.MaterialButton>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/homeB"
+        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Home">
+
+    </com.google.android.material.button.MaterialButton>
 
 
 </LinearLayout>
