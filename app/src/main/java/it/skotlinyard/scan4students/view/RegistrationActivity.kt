@@ -31,21 +31,17 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val context = this.applicationContext
-        //val getter = SpinnerGetter(context)
+        val getter = SpinnerGetter(context)
         controller = RegistrationController(context)
-         /*
+
         var colleges: ArrayList<String> by Delegates.observable(ArrayList()){ property, oldValue, newValue ->
             val adapter = ArrayAdapter(context,android.R.layout.simple_expandable_list_item_1,newValue)
-            binding.college.setAdapter(adapter)
-            Log.v("S4S","colleges attached to autoCompleteTextView")
-            Log.v("S4S","Observer: ${newValue[10]}")
+            binding.spinner.setAdapter(adapter)
         }
         CoroutineScope(Dispatchers.IO).launch{
             Looper.prepare()
             colleges = getter.getCollegesList()
-            Log.v("S4S","all colleges downloaded")
-            Log.v("S4S","Coroutine: ${colleges[10]}")
-        }    */
+        }
 
         var bool: Boolean? by Delegates.observable(null){property, oldValue, newValue ->
             Log.v("S4S","bool has changed value: $newValue. Previously was: $oldValue")
@@ -64,7 +60,7 @@ class RegistrationActivity : AppCompatActivity() {
                 binding.username.text.toString().isBlank() || binding.pswEntry.text.toString()
                     .isBlank() ||
                 binding.pswConfirm.text.toString()
-                    .isBlank() || binding.college.text.toString().isBlank()
+                    .isBlank() || binding.spinner.selectedItem.toString().isBlank()
             ) {
                 Toast.makeText(this, R.string.empty_entry, Toast.LENGTH_LONG).show()
             }
@@ -90,7 +86,7 @@ class RegistrationActivity : AppCompatActivity() {
                     binding.username.text.toString(),
                     binding.pswEntry.text.toString(),
                     birthday,
-                    binding.college.text.toString(),
+                    binding.spinner.selectedItem.toString(),
                     gender
                 )
                     CoroutineScope(Dispatchers.IO).launch {
