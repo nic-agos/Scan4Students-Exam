@@ -61,6 +61,7 @@ class UserProfileActivity : AppCompatActivity() {
         }
         binding.homeB.setOnClickListener{
             val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("prev","user")
             startActivity(intent)
         }
     }

@@ -11,10 +11,16 @@ class HomeActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     override fun onBackPressed() {
+        val prev = intent.getStringExtra("prev")
+        if(prev=="login"){
         Session.setLogged(false)
         Session.setCurrUsername("")
         val intent= Intent(this, MainActivity::class.java)
         startActivity(intent)
+        }
+        else{
+            super.onBackPressed()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -8,7 +8,7 @@ class SpinnerGetter(context: Context) {
     private val db = DbScan4Students.getInstance(context)
 
     fun getCollegesList(): ArrayList<String>{
-        val list = db.universitaDao().getAllUniversitiesOrderByName()
+        val list = db.universitaDao().getAllUniversitiesOrderByRegion()
         val array: ArrayList<String> = ArrayList()
         for(item in list)
             array.add(item.nome)

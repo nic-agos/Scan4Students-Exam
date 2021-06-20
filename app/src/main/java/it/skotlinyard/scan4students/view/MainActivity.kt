@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding.registrationBtn.setOnClickListener{
             val intent= Intent(this, RegistrationActivity::class.java)
+            intent.putExtra("prev","login")
             startActivity(intent)
         }
         binding.loginBtn.setOnClickListener {
@@ -97,6 +98,5 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         finish()
-
     }
 }
