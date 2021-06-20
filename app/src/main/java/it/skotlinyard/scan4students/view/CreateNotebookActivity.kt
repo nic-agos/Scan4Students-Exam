@@ -3,6 +3,7 @@ package it.skotlinyard.scan4students.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import it.skotlinyard.scan4students.R
@@ -32,6 +33,7 @@ class CreateNotebookActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        val context = this.applicationContext
         val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
         val date = LocalDate.parse("${LocalDate.now()}")
         val currentDate = date.format(formatter)
@@ -81,9 +83,16 @@ class CreateNotebookActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.IO).launch {
                     val subID = controller.getSubIDByNameAndProf(binding.subSpinner.selectedItem.toString(),
                     binding.profSpinner.selectedItem.toString())
-                    val quad = Quaderni(binding.entryTitle.text.toString(),
-                        subID,0, visibility,"ITA", Session.getCurrUsername(),currentDate.toString())
-                    bool = controller.uploadNotebook(quad)
+                    Log.v("S4S", "Prima della upload")
+                    if (subID != -1){
+                        val quad = Quaderni(binding.entryTitle.text.toString(),
+                            subID,0, visibility,"ITA", Session.getCurrUsername(),currentDate.toString())
+                        bool = controller.uploadNotebook(quad)
+                    }else{
+                        CoroutineScope(Dispatchers.Main).launch {
+                            Toast.makeText(context, R.string.prof_sub_err, Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
             }
         }

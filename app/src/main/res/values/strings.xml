@@ -41,31 +41,7 @@
     <string name="prof_n_sub">Professore e Materia</string>
     <string name="create_notebook">Crea Quaderno</string>
     <string name="wrong_credential">Username o Password errate</string>
-
-    <string-array name="materie_prova">
-        <item>Analisi 1</item>
-        <item>Geometria</item>
-        <item>Economia Aziendale</item>
-    </string-array>
-
-    <string-array name="facoltà">
-        <item>Ingegneria</item>
-        <item>Giurisprudenza</item>
-        <item>Economia</item>
-    </string-array>
-
-    <string-array name="professori">
-        <item>Di Gennaro</item>
-        <item>Isola</item>
-        <item>Dalena</item>
-    </string-array>
-
-    <string-array name="universita">
-        <item>uniroma1</item>
-        <item>uniroma2</item>
-        <item>uniroma3</item>
-    </string-array>
-
+    <string name="prof_sub_err">Il prof selezionato non insegna questa materia</string>
     <string name="Notebooks">I tuoi quaderni</string>
     <string name="statistiche">Stats</string>
 </resources>

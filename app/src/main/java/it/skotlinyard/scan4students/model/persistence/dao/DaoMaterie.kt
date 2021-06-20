@@ -36,13 +36,13 @@ interface DaoMaterie {
     @Query("SELECT * FROM Materie WHERE facolta = :faculty")
     fun getSubjectsByFaculty(faculty: String): MutableList<Materie>
 
-    @Query("SELECT DISTINCT prof FROM Materie")
+    @Query("SELECT DISTINCT prof FROM Materie ORDER BY prof")
     fun getAllProf(): MutableList<String>
 
-    @Query("SELECT DISTINCT materia FROM Materie")
+    @Query("SELECT DISTINCT materia FROM Materie ORDER BY materia")
     fun getAllSubjects(): MutableList<String>
 
-    @Query("SELECT DISTINCT facolta FROM Materie")
+    @Query("SELECT DISTINCT facolta FROM Materie ORDER BY facolta")
     fun getAllFaculties(): MutableList<String>
 
 
