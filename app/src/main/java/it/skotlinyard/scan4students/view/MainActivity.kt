@@ -15,6 +15,9 @@ import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.controller.LoginController
 import it.skotlinyard.scan4students.databinding.ActivityMainBinding
 import it.skotlinyard.scan4students.databinding.ActivityMainBinding.*
+import it.skotlinyard.scan4students.model.persistence.DbScan4Students
+import it.skotlinyard.scan4students.model.persistence.Universita
+import it.skotlinyard.scan4students.utils.FolderWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(binding.root)
 
+        prepareFolders()
+
         val controller = LoginController(this)
         var bool: Boolean? by Delegates.observable(null){property, oldValue, newValue ->
             if(newValue == true){ //login succesful, go to HomeActivity
@@ -67,6 +72,25 @@ class MainActivity : AppCompatActivity() {
                 Log.v("S4S", "entrato nella coroutine")
                 bool = controller.verifyCredentials(binding.email.text.toString(),binding.psw.text.toString())
                 Log.v("S4S", "valore di bool dopo il db $bool")
+            }
+        }
+    }
+
+    private fun prepareFolders() {
+        println("CREIAMO STO FILE SYSTEM")
+        val gestoreFiles = FolderWorker()
+        val myCoroutineScope= CoroutineScope(Dispatchers.IO)
+        myCoroutineScope.launch(Dispatchers.IO) {
+            val db = DbScan4Students.getInstance(baseContext)
+            val utenti = db.studentiDao().getAllStudents()
+            utenti.forEach{
+                studente ->
+                gestoreFiles.createNewDirectory(studente.username)
+                val quaderni = db.quaderniDao().getPublicNotebooksByUser(studente.username)
+                quaderni.forEach{
+                    quaderno->
+                    gestoreFiles.createNewSubDirectory("/"+quaderno.studente,quaderno.titolo)
+                }
             }
         }
     }
