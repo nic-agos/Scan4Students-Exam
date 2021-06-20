@@ -44,4 +44,8 @@
     <string name="prof_sub_err">Il prof selezionato non insegna questa materia</string>
     <string name="Notebooks">I tuoi quaderni</string>
     <string name="statistiche">Stats</string>
+    <string name="settings">Impostazioni</string>
+    <string name="about">About</string>
+    <string name="log_out">Log Out</string>
+
 </resources>
