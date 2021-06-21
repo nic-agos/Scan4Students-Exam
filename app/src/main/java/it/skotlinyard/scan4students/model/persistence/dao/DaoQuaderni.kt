@@ -31,4 +31,6 @@ interface DaoQuaderni {
     @Query("UPDATE Quaderni SET numeroPagine = :pageNumb WHERE indice = :notebookId")
     fun updateNotebookPageNumber(pageNumb: Int, notebookId: Int)
 
+    @Query("SELECT * FROM Quaderni WHERE studente = :username" )
+    fun getAllNotebooksByUser(username: String): MutableList<Quaderni>
 }

@@ -7,8 +7,14 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.skotlinyard.scan4students.R
+import it.skotlinyard.scan4students.controller.NotebookController
 import it.skotlinyard.scan4students.databinding.ActivityHomeBinding
+import it.skotlinyard.scan4students.model.persistence.Quaderni
 import it.skotlinyard.scan4students.utils.Session
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 class HomeActivity: AppCompatActivity() {
 
@@ -33,20 +39,31 @@ class HomeActivity: AppCompatActivity() {
         supportActionBar?.setTitle(R.string.app_name)
         setContentView(binding.root)
 
-        binding.searchButtonH.setOnClickListener{
-            val intent= Intent(this, SearchActivity::class.java)
+        val ncontroller = NotebookController(this)
+
+        var personalNotebookList: MutableList<Quaderni>? by Delegates.observable(null) { property, oldValue, newValue ->
+            if (newValue.isNullOrEmpty())
+                Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
+            else {
+                Session.notebookSearchList = newValue
+                val intent = Intent(this, VisualizeNotebooksActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        binding.searchButtonH.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
         }
-        binding.profileButton.setOnClickListener{
-            val intent= Intent(this, UserProfileActivity::class.java)
+        binding.profileButton.setOnClickListener {
+            val intent = Intent(this, UserProfileActivity::class.java)
             intent.putExtra("user", Session.getCurrUsername())
             startActivity(intent)
         }
-        binding.myNotebookButton.setOnClickListener{
-        //TODO add notebook view and intent here.
-        val intent= Intent(this, CreateNotebookActivity::class.java)
-            startActivity(intent)
-         //   Toast.makeText(this, "work in progress", Toast.LENGTH_LONG).show()
+        binding.myNotebookButton.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                personalNotebookList = ncontroller.getAllByUser(Session.getCurrUsername())
+            }
         }
     }
 
@@ -72,7 +89,4 @@ class HomeActivity: AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
-
 }

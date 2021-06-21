@@ -27,6 +27,26 @@ class NotebookController(context: Context) {
         }
     }
 
+    fun getPubNotebookByUser(username: String): MutableList<Quaderni>?{
+        val res: MutableList<Quaderni>?
+        try {
+            res = db.quaderniDao().getPublicNotebooksByUser(username)
+            return res
+        } catch (e: SQLException) {
+            return null
+        }
+    }
+
+    fun getAllByUser(username: String): MutableList<Quaderni>?{
+        val all: MutableList<Quaderni>?
+        try {
+            all = db.quaderniDao().getAllNotebooksByUser(username)
+            return all
+        }catch (e: SQLException){
+            return null
+        }
+    }
+
     fun getSubIDByNameAndProf(sub: String,prof: String): Int{
         val materia: Materie
         try {

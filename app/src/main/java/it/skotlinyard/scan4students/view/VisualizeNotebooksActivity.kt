@@ -13,13 +13,16 @@ import it.skotlinyard.scan4students.model.Image
 import it.skotlinyard.scan4students.model.ImageAdapter
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.databinding.ActivityVisualizeNotebooksBinding
+import it.skotlinyard.scan4students.model.NotebookAdapter
+import it.skotlinyard.scan4students.model.persistence.Quaderni
+import it.skotlinyard.scan4students.utils.Session
 
-/*
+
 class VisualizeNotebooksActivity : AppCompatActivity() {
 
     private var imageRecycler: RecyclerView?=null
     private var progressBar: ProgressBar?=null
-    private var allNotebooks:ArrayList<Image>?=null //in realtà è array list di quaderni
+    private var allNotebooks:MutableList<Quaderni>?=null //in realtà è array list di quaderni
     private lateinit var binding: ActivityVisualizeNotebooksBinding
     private var leftIcon: ImageView?=null
     private var rightIcon: ImageView?=null
@@ -30,40 +33,34 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
         binding = ActivityVisualizeNotebooksBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        allNotebooks= Session.notebookSearchList
+
         leftIcon=findViewById(R.id.left_icon)
         leftIcon?.setOnClickListener{
-            val intent= Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            onBackPressed()
         }
         rightIcon=findViewById(R.id.right_icon)
         rightIcon?.setOnClickListener{
-            val intent= Intent(this, HomeActivity::class.java) //Activity per inserimento nuovo quaderno
+            val intent= Intent(this, CreateNotebookActivity::class.java) //Activity per inserimento nuovo quaderno
             startActivity(intent)
         }
 
         title=findViewById(R.id.toolbar_title)
         title?.setText(getString(R.string.Notebooks))
 
-        imageRecycler=binding.imageRecycler
+        imageRecycler=binding.notebookRecycler
         progressBar=binding.reyclerProgressBar
 
         imageRecycler?.layoutManager= GridLayoutManager(this,1)
         imageRecycler?.setHasFixedSize(true)
 
-        allNotebooks=ArrayList()
-        if (allNotebooks!!.isEmpty())
-        {
+        progressBar?.visibility= View.VISIBLE
+        //set adapter to recycler
+        imageRecycler?.adapter= allNotebooks?.let { NotebookAdapter(this, it) }
+        progressBar?.visibility= View.GONE
 
-            progressBar?.visibility= View.VISIBLE
-            //get all NOtebooks from storage
-            TODO("Funzione che restituisce la lista dei quaderni dato il nome")
-            //set adapter to recycler
-       //     imageRecycler?.adapter= ImageAdapter(this, allPictures!!)
-            progressBar?.visibility= View.GONE
-        }
     }
 }
 
 
 
- */
