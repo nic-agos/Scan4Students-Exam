@@ -9,8 +9,6 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import it.skotlinyard.scan4students.model.Image
-import it.skotlinyard.scan4students.model.ImageAdapter
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.databinding.ActivityVisualizeNotebooksBinding
 import it.skotlinyard.scan4students.model.NotebookAdapter
@@ -22,7 +20,7 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
 
     private var imageRecycler: RecyclerView?=null
     private var progressBar: ProgressBar?=null
-    private var allNotebooks:MutableList<Quaderni>?=null //in realtà è array list di quaderni
+    private var allNotebooks:MutableList<Quaderni>?=null
     private lateinit var binding: ActivityVisualizeNotebooksBinding
     private var leftIcon: ImageView?=null
     private var rightIcon: ImageView?=null

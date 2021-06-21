@@ -47,5 +47,14 @@
     <string name="settings">Impostazioni</string>
     <string name="about">About</string>
     <string name="log_out">Log Out</string>
+    <string name="titolo">Titolo: </string>
+    <string name="studente">Studente: </string>
+    <string name="lingua">Lingua: </string>
+    <string name="data">Data: </string>
+    <string name="immQuad">immagine quaderno</string>
+    <string name="titv">titV</string>
+    <string name="linv">linV</string>
+    <string name="matv">matV</string>
+    <string name="datav">dataV</string>
 
 </resources>
