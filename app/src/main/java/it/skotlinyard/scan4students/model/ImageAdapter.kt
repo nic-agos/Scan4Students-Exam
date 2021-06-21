@@ -38,12 +38,12 @@ class ImageAdapter(private var context: Context, private var imagesList: ArrayLi
             .apply(RequestOptions().centerCrop())
             .into(holder.image!!)
 
-      /*  holder.image?.setOnClickListener {
+        holder.image?.setOnClickListener {
             val intent= Intent(context, ImageFullActivity::class.java)
             intent.putExtra("path",currentImage.imagePath)
             intent.putExtra("name",currentImage.imageName)
             context.startActivity(intent)
-        }*/
+        }
 
     }
 
