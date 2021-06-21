@@ -11,14 +11,15 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.model.persistence.Quaderni
-/*
-class NotebookAdapter(private var context: Context, private var notebooksList: ArrayList<Quaderni>) :
+import it.skotlinyard.scan4students.view.NotebookViewActivity
+
+class NotebookAdapter(private var context: Context, private var notebooksList: MutableList<Quaderni>) :
     RecyclerView.Adapter<NotebookAdapter.NotebookViewHolder>() {
 
     class NotebookViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var image: ImageView?=null
         init {
-            image=itemView.findViewById(R.id.row_image)
+            image=itemView.findViewById(R.id.notebookImage)
         }
 
     }
@@ -32,10 +33,8 @@ class NotebookAdapter(private var context: Context, private var notebooksList: A
     override fun onBindViewHolder(holder: NotebookViewHolder, position: Int) {
         val currentNotebook=notebooksList[position]
 
-        TODO("Associare immagine a quaderno")
-
         Glide.with(context)
-            .load(currentNotebook.imagePath)
+            .load(R.drawable.an1_ing)
             .apply(RequestOptions().centerCrop())
             .into(holder.image!!)
 
@@ -55,5 +54,5 @@ class NotebookAdapter(private var context: Context, private var notebooksList: A
 
 }
 
- */
+
 

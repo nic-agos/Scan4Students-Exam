@@ -20,7 +20,6 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 typealias LumaListener = (luma: Double) -> Unit
 
-//TODO add folder worker output
 
 class CameraActivity : AppCompatActivity() {
     private var imageCapture: ImageCapture? = null

@@ -58,10 +58,15 @@ class SearchActivity: AppCompatActivity() {
                 Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
         }
 
-        var resultNotebooks: MutableList<Quaderni>? by Delegates.observable(null){property, oldValue, newValue ->
-            Log.v("S4S","$newValue")
+        var resultNotebooks: MutableList<Quaderni>? by Delegates.observable(null) { property, oldValue, newValue ->
+            if (newValue.isNullOrEmpty())
+                Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
+            else {
+                Session.notebookSearchList = newValue
+                val intent = Intent(this, VisualizeNotebooksActivity::class.java)
+                startActivity(intent)
+            }
         }
-
 
         CoroutineScope(Dispatchers.IO).launch{
             professorArray = getter.getAllProfs()
