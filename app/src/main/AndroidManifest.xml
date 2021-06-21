@@ -27,6 +27,9 @@
         <activity android:name=".view.CameraActivity" />
         <activity android:name=".view.HomeActivity" />
         <activity android:name=".view.SearchActivity" />
+        <activity android:name=".view.VisualizeNotebooksActivity"/>
+        <activity android:name=".view.NotebookViewActivity"/>
+        <activity android:name=".view.ImageFullActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

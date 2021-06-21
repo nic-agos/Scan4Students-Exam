@@ -37,6 +37,8 @@ class NotebookViewActivity : AppCompatActivity() {
         binding = ActivityNotebookViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val context = this.applicationContext
+
         leftIcon=findViewById(R.id.left_icon)
         leftIcon?.setOnClickListener{
             val intent= Intent(this, HomeActivity::class.java)
@@ -45,7 +47,7 @@ class NotebookViewActivity : AppCompatActivity() {
 
         rightIcon=findViewById(R.id.right_icon)
         rightIcon?.setOnClickListener{
-            val intent= Intent(this, CameraActivity::class.java)
+            val intent= Intent(context, CameraActivity::class.java)
             startActivity(intent)
         }
         val notebookTitle= intent.getStringExtra("Nome")
