@@ -51,6 +51,9 @@ class NotebookViewActivity : AppCompatActivity() {
             val intent= Intent(context, CameraActivity::class.java)
             startActivity(intent)
         }
+        if(!intent.getBooleanExtra("add_btn",false))
+            rightIcon?.visibility=View.GONE
+
         val notebookTitle= intent.getStringExtra("Nome")
         title=findViewById(R.id.toolbar_title)
         title?.setText(notebookTitle)

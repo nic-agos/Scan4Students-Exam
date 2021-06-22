@@ -50,9 +50,13 @@ class UserProfileActivity : AppCompatActivity() {
             if (newValue.isNullOrEmpty())
                 Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
             else{
-            Session.notebookSearchList = newValue
-            val intent = Intent(this, VisualizeNotebooksActivity::class.java)
-            startActivity(intent)
+                Session.notebookSearchList = newValue
+                val intent = Intent(this, VisualizeNotebooksActivity::class.java)
+                if(uname==Session.getCurrUsername())
+                    intent.putExtra("add_btn_toolbar",true)
+                else
+                    intent.putExtra("add_btn_toolbar",false)
+                startActivity(intent)
             }
         }
 

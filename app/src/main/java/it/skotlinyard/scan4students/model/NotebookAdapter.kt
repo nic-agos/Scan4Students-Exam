@@ -14,6 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.R.drawable.*
 import it.skotlinyard.scan4students.model.persistence.Quaderni
+import it.skotlinyard.scan4students.utils.Session
 import it.skotlinyard.scan4students.view.NotebookViewActivity
 
 class NotebookAdapter(private var context: Context, private var notebooksList: MutableList<Quaderni>) :
@@ -135,6 +136,10 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
         holder.image?.setOnClickListener {
             val intent= Intent(context, NotebookViewActivity::class.java)
             intent.putExtra("Nome",currentNotebook.titolo)
+            if (Session.getCurrUsername()==currentNotebook.studente)
+                intent.putExtra("add_btn",true)
+            else
+                intent.putExtra("add_btn",false)
             context.startActivity(intent)
         }
     }

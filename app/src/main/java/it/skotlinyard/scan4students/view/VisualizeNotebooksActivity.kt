@@ -44,6 +44,10 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
             val intent= Intent(this, CreateNotebookActivity::class.java) //Activity per inserimento nuovo quaderno
             startActivity(intent)
         }
+        if(!intent.getBooleanExtra("add_btn_toolbar",false)) {
+            rightIcon?.visibility=View.GONE
+        }
+
 
         title=findViewById(R.id.toolbar_title)
         title?.setText(getString(R.string.Notebooks))

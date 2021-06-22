@@ -64,6 +64,7 @@ class SearchActivity: AppCompatActivity() {
             else {
                 Session.notebookSearchList = newValue
                 val intent = Intent(this, VisualizeNotebooksActivity::class.java)
+                intent.putExtra("add_btn_toolbar",false)
                 startActivity(intent)
             }
         }
