@@ -29,6 +29,7 @@ class SearchActivity: AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        val context = this.applicationContext
         val getter = SpinnerGetter(this)
         val controller = SearchController(this)
 
@@ -50,17 +51,19 @@ class SearchActivity: AppCompatActivity() {
 
         var resultUser: Studenti? by Delegates.observable(null){property, oldValue, newValue ->
             if(newValue!=null){
-            val intent= Intent(this, UserProfileActivity::class.java)
+            val intent= Intent(context, UserProfileActivity::class.java)
             intent.putExtra("user", newValue.username)
             startActivity(intent)
             }
             else
-                Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
+                CoroutineScope(Dispatchers.Main).launch{
+                Toast.makeText(context, R.string.search_error, Toast.LENGTH_SHORT).show()}
         }
 
         var resultNotebooks: MutableList<Quaderni>? by Delegates.observable(null) { property, oldValue, newValue ->
             if (newValue.isNullOrEmpty())
-                Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
+                CoroutineScope(Dispatchers.Main).launch{
+                Toast.makeText(context, R.string.search_error, Toast.LENGTH_SHORT).show()}
             else {
                 Session.notebookSearchList = newValue
                 val intent = Intent(this, VisualizeNotebooksActivity::class.java)
@@ -108,7 +111,7 @@ class SearchActivity: AppCompatActivity() {
                 fac.isBlank()&&
                 prof.isBlank()){
                 CoroutineScope(Dispatchers.IO).launch{
-                    resultNotebooks = controller.getAllNotebooks()
+                    resultNotebooks = controller.getAllPublicNotebooks()
                 }
             }
 

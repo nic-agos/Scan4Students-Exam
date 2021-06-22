@@ -16,6 +16,9 @@ interface DaoQuaderni {
     @Query("SELECT * FROM Quaderni")
     fun getAllNotebooks(): MutableList<Quaderni>
 
+    @Query("SELECT * FROM Quaderni WHERE visibilita='PUBLIC'")
+    fun getAllPublicNotebooks():MutableList<Quaderni>
+
     @Query("SELECT * FROM Quaderni WHERE indice = :notebookId")
     fun getNotebookByIndex(notebookId: Int): Quaderni
 

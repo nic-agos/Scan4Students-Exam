@@ -95,8 +95,17 @@ class UserProfileActivity : AppCompatActivity() {
         }
 
         }
-    fun getAllNB(){
+    }
 
+    override fun onBackPressed() {
+        if(Session.getCurrUsername()==uname){
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("prev","user")
+            startActivity(intent)
         }
+        else{
+            super.onBackPressed()
+        }
+
     }
 }

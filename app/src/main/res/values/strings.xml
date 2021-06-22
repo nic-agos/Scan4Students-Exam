@@ -56,5 +56,6 @@
     <string name="linv">linV</string>
     <string name="matv">matV</string>
     <string name="datav">dataV</string>
+    <string name="by">" by "</string>
 
 </resources>

@@ -101,8 +101,8 @@ class SearchController(context: Context) {
         val res = db.studentiDao().getStudent(username)
         return res
     }
-    fun getAllNotebooks(): MutableList<Quaderni>{
-        val res = db.quaderniDao().getAllNotebooks()
+    fun getAllPublicNotebooks(): MutableList<Quaderni>{
+        val res = db.quaderniDao().getAllPublicNotebooks()
         return res
     }
 }

@@ -36,7 +36,7 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
                 field=value
                 lingua?.setText(field?.lingua)
                 data?.setText(field?.dataCaricamento)
-                studente?.setText(field?.titolo + " di "+ field?.studente)
+                studente?.setText(field?.titolo + R.string.by+ field?.studente)
             }
     }
 
@@ -52,7 +52,7 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
         var currentNotebook=notebooksList[position]
 
         when (currentNotebook.materia){
-            1 ->{if (currentNotebook.visibilita=="PUBLIC")
+            1,11 ->{if (currentNotebook.visibilita=="PUBLIC")
                 Glide.with(context)
                     .load(an1_ing)
                     .apply(RequestOptions().centerCrop())
@@ -63,7 +63,7 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
                     .apply(RequestOptions().centerCrop())
                     .into(holder.image!!)
             }
-            3 ->{if (currentNotebook.visibilita=="PUBLIC")
+            3,10 ->{if (currentNotebook.visibilita=="PUBLIC")
                 Glide.with(context)
                     .load(geom_ing)
                     .apply(RequestOptions().centerCrop())
@@ -75,7 +75,7 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
                     .into(holder.image!!)
             }
 
-            4 ->{if (currentNotebook.visibilita=="PUBLIC")
+            4,13 ->{if (currentNotebook.visibilita=="PUBLIC")
                 Glide.with(context)
                     .load(micro_eco)
                     .apply(RequestOptions().centerCrop())
@@ -87,7 +87,7 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
                     .into(holder.image!!)
             }
 
-            7 ->{if (currentNotebook.visibilita=="PUBLIC")
+            7,16 ->{if (currentNotebook.visibilita=="PUBLIC")
                 Glide.with(context)
                     .load(dciv_giur)
                     .apply(RequestOptions().centerCrop())
@@ -98,18 +98,8 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
                     .apply(RequestOptions().centerCrop())
                     .into(holder.image!!)
             }
-            11 ->{if (currentNotebook.visibilita=="PUBLIC")
-                Glide.with(context)
-                    .load(an1_ing)
-                    .apply(RequestOptions().centerCrop())
-                    .into(holder.image!!)
-            else
-                Glide.with(context)
-                    .load(an1_ing_priv)
-                    .apply(RequestOptions().centerCrop())
-                    .into(holder.image!!)
-            }
-            15 ->{if (currentNotebook.visibilita=="PUBLIC")
+
+            6,15 ->{if (currentNotebook.visibilita=="PUBLIC")
                 Glide.with(context)
                     .load(dirpriv_eco)
                     .apply(RequestOptions().centerCrop())
@@ -120,7 +110,7 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
                     .apply(RequestOptions().centerCrop())
                     .into(holder.image!!)
             }
-            17 -> {if (currentNotebook.visibilita=="PUBLIC")
+            8,17 -> {if (currentNotebook.visibilita=="PUBLIC")
                 Glide.with(context)
                     .load(deccl_giur)
                     .apply(RequestOptions().centerCrop())
@@ -131,6 +121,40 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
                     .apply(RequestOptions().centerCrop())
                     .into(holder.image!!)
             }
+            2,12 -> {if (currentNotebook.visibilita=="PUBLIC")
+                Glide.with(context)
+                    .load(fis1_ing)
+                    .apply(RequestOptions().centerCrop())
+                    .into(holder.image!!)
+            else
+                Glide.with(context)
+                    .load(fis1_ing_priv)
+                    .apply(RequestOptions().centerCrop())
+                    .into(holder.image!!)
+            }
+            5,14 -> {if (currentNotebook.visibilita=="PUBLIC")
+                Glide.with(context)
+                    .load(ecoaz_eco)
+                    .apply(RequestOptions().centerCrop())
+                    .into(holder.image!!)
+            else
+                Glide.with(context)
+                    .load(ecoaz_eco_priv)
+                    .apply(RequestOptions().centerCrop())
+                    .into(holder.image!!)
+            }
+            9,18 -> {if (currentNotebook.visibilita=="PUBLIC")
+                Glide.with(context)
+                    .load(dpub_giur)
+                    .apply(RequestOptions().centerCrop())
+                    .into(holder.image!!)
+            else
+                Glide.with(context)
+                    .load(dpub_giur_priv)
+                    .apply(RequestOptions().centerCrop())
+                    .into(holder.image!!)
+            }
+
         }
 
         holder.image?.setOnClickListener {
@@ -142,6 +166,7 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
                 intent.putExtra("add_btn",false)
             context.startActivity(intent)
         }
+
     }
 
     override fun getItemCount(): Int {
