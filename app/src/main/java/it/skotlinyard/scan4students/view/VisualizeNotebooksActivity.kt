@@ -31,6 +31,8 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
         binding = ActivityVisualizeNotebooksBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         allNotebooks= Session.notebookSearchList
 
         leftIcon=findViewById(R.id.left_icon)
@@ -55,6 +57,7 @@ class VisualizeNotebooksActivity : AppCompatActivity() {
         progressBar?.visibility= View.VISIBLE
         //set adapter to recycler
         imageRecycler?.adapter= allNotebooks?.let { NotebookAdapter(this, it) }
+
         progressBar?.visibility= View.GONE
 
     }
