@@ -13,23 +13,33 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scan4StudentsEx">
-        <activity android:name=".view.CreateNotebookActivity" />
-        <activity android:name=".view.StatsActivity" />
-        <activity android:name=".view.UserProfileActivity" />
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.CreateNotebookActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.StatsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.UserProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.RegistrationActivity" />
-        <activity android:name=".view.CameraActivity" />
-        <activity android:name=".view.HomeActivity" />
-        <activity android:name=".view.SearchActivity" />
-        <activity android:name=".view.VisualizeNotebooksActivity"/>
-        <activity android:name=".view.NotebookViewActivity"/>
-        <activity android:name=".view.ImageFullActivity"/>
+        <activity android:name=".view.RegistrationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.CameraActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.SearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.VisualizeNotebooksActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.NotebookViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.ImageFullActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
