@@ -32,10 +32,11 @@
                 android:id="@+id/Data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
                 android:layout_marginBottom="16dp"
                 android:text="@string/data"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/contenutoLingua"
+                app:layout_constraintEnd_toStartOf="@+id/contenutoData"
                 app:layout_constraintTop_toBottomOf="@+id/contenutoStudente" />
 
             <ImageView
@@ -52,9 +53,8 @@
                 android:id="@+id/contenutoLingua"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
+                android:layout_marginStart="3dp"
                 android:layout_marginBottom="16dp"
-                android:text="lin"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/Lingua"
@@ -64,10 +64,9 @@
                 android:id="@+id/contenutoStudente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
+                android:layout_marginStart="3dp"
                 android:layout_marginTop="16dp"
                 android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/notebookImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,12 +74,11 @@
                 android:id="@+id/contenutoData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginBottom="16dp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/Data"
                 app:layout_constraintTop_toBottomOf="@+id/contenutoStudente" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
