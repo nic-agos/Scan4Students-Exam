@@ -21,13 +21,11 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
 
     class NotebookViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var image: ImageView?=null
-        var titolo: TextView?=null
         var lingua: TextView?=null
         var data: TextView?=null
         var studente: TextView?=null
         init {
             image=itemView.findViewById(R.id.notebookImage)
-            titolo=itemView.findViewById(R.id.contenutoTitolo)
             lingua=itemView.findViewById(R.id.contenutoLingua)
             data=itemView.findViewById(R.id.contenutoData)
             studente=itemView.findViewById(R.id.contenutoStudente)
@@ -35,11 +33,9 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
         var currentNotebook: Quaderni?= Quaderni("",0,0,"","","","")
             set(value) {
                 field=value
-                var s = field?.titolo?.substring(0, Math.min(field?.titolo!!.length, 13))
-                titolo?.setText(s)
                 lingua?.setText(field?.lingua)
                 data?.setText(field?.dataCaricamento)
-                studente?.setText(field?.studente)
+                studente?.setText(field?.titolo + " di "+ field?.studente)
             }
     }
 
