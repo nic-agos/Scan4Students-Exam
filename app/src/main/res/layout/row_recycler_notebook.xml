@@ -18,35 +18,15 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/Titolo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/titolo"
-                app:layout_constraintStart_toEndOf="@+id/notebookImage"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/Studente"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/studente"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/Titolo"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
                 android:id="@+id/Lingua"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
                 android:layout_marginBottom="16dp"
                 android:text="@string/lingua"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/Titolo"
-                app:layout_constraintTop_toBottomOf="@+id/Titolo" />
+                app:layout_constraintStart_toEndOf="@+id/notebookImage"
+                app:layout_constraintTop_toBottomOf="@+id/contenutoStudente" />
 
             <TextView
                 android:id="@+id/Data"
@@ -55,30 +35,18 @@
                 android:layout_marginBottom="16dp"
                 android:text="@string/data"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/Studente"
-                app:layout_constraintTop_toBottomOf="@+id/Studente" />
+                app:layout_constraintStart_toEndOf="@+id/contenutoLingua"
+                app:layout_constraintTop_toBottomOf="@+id/contenutoStudente" />
 
             <ImageView
                 android:id="@+id/notebookImage"
                 android:layout_width="98dp"
                 android:layout_height="98dp"
+                android:contentDescription="@string/immQuad"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_launcher_foreground"
-                android:contentDescription="@string/immQuad" />
-
-            <TextView
-                android:id="@+id/contenutoTitolo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="16dp"
-                android:visibility="visible"
-                app:layout_constraintEnd_toStartOf="@+id/Studente"
-                app:layout_constraintStart_toEndOf="@+id/Titolo"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:visibility="visible" />
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <TextView
                 android:id="@+id/contenutoLingua"
@@ -86,21 +54,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
                 android:layout_marginBottom="16dp"
+                android:text="lin"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/Data"
                 app:layout_constraintStart_toEndOf="@+id/Lingua"
-                app:layout_constraintTop_toBottomOf="@+id/contenutoTitolo" />
+                app:layout_constraintTop_toBottomOf="@+id/contenutoStudente" />
 
             <TextView
                 android:id="@+id/contenutoStudente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
+                android:layout_marginStart="2dp"
                 android:layout_marginTop="16dp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/Studente"
+                app:layout_constraintStart_toEndOf="@+id/notebookImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
