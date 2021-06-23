@@ -3,6 +3,7 @@ package it.skotlinyard.scan4students.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.android.material.transition.VisibilityAnimatorProvider
 import it.skotlinyard.scan4students.R
@@ -82,21 +83,20 @@ class UserProfileActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.IO).launch {
                     personalNotebookList = ncontroller.getAllByUser(Session.getCurrUsername())
                 }
-            }
-            else {
+            } else {
                 CoroutineScope(Dispatchers.IO).launch {
                     personalNotebookList = ncontroller.getPubNotebookByUser(uname)
+                }
             }
         }
         binding.homeB.setOnClickListener{
+            Log.v("S4S","click home btn userprofile")
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("prev","user")
             startActivity(intent)
         }
 
         }
-    }
-
     override fun onBackPressed() {
         if(Session.getCurrUsername()==uname){
             val intent = Intent(this, HomeActivity::class.java)
@@ -108,4 +108,6 @@ class UserProfileActivity : AppCompatActivity() {
         }
 
     }
-}
+    }
+
+
