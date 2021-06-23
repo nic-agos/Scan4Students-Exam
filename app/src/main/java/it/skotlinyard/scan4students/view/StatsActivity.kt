@@ -65,11 +65,11 @@ class StatsActivity : AppCompatActivity() {
             //Chart Appearance
             barChart.setFitBars(true)
 
+
             val xAxis: XAxis = barChart.getXAxis()
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
             xAxis.setCenterAxisLabels(false)
-            xAxis.setDrawGridLines(false);
-
+            xAxis.setDrawGridLines(false)
 
             
 
