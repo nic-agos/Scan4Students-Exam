@@ -15,10 +15,10 @@ abstract class DbScan4Students : RoomDatabase() {
                 db = Room.databaseBuilder(
                         context.applicationContext,
                         DbScan4Students::class.java,
-                        "Scan4Students_v.1.6.db"
+                        "Scan4Students_v.1.7.db"
 
                 )
-                       .createFromAsset("database/Scan4Students_v.1.6.db")
+                       .createFromAsset("database/Scan4Students_v.1.7.db")
             .build()
             return db as DbScan4Students
         }
