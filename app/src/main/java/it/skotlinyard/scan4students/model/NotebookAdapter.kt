@@ -36,7 +36,7 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
                 field=value
                 lingua?.setText(field?.lingua)
                 data?.setText(field?.dataCaricamento)
-                studente?.setText(field?.titolo + R.string.by+ field?.studente)
+                studente?.setText(field?.titolo + " by "+ field?.studente)
             }
     }
 
