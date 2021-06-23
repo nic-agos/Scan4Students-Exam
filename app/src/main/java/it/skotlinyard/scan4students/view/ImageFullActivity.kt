@@ -15,7 +15,7 @@ class ImageFullActivity : AppCompatActivity() {
 
         val imagePath= intent.getStringExtra("path")
         val imageName= intent.getStringExtra("name")
-        supportActionBar?.title = imagePath
+        //supportActionBar?.title = imagePath
 
 
         Glide.with(this)
