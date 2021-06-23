@@ -17,7 +17,7 @@ import it.skotlinyard.scan4students.utils.FolderWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.io.File
+import java.io.*
 import kotlin.properties.Delegates
 
 
@@ -97,6 +97,51 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    /*private fun copyAssets() {
+        val assetManager = assets
+        var files: Array<String>? = null
+        try {
+            files = assetManager.list("samplepictures") //MODIFICA
+        } catch (e: IOException) {
+        }
+        if (files != null) for (filename in files) {
+            var `in`: InputStream? = null
+            var out: OutputStream? = null
+            try {
+                `in` = assetManager.open(filename)
+                val outFile = File(getExternalFilesDir(null), filename)
+                out = FileOutputStream(outFile)
+                copyFile(`in`, out)
+            } catch (e: IOException) {
+                Log.e("tag", "Failed to copy asset file: $filename", e)
+            } finally {
+                if (`in` != null) {
+                    try {
+                        `in`.close()
+                    } catch (e: IOException) {
+                        // NOOP
+                    }
+                }
+                if (out != null) {
+                    try {
+                        out.close()
+                    } catch (e: IOException) {
+                        // NOOP
+                    }
+                }
+            }
+        }
+    }
+
+    @Throws(IOException::class)
+    private fun copyFile(`in`: InputStream, out: OutputStream) {
+        val buffer = ByteArray(1024)
+        var read: Int
+        while (`in`.read(buffer).also { read = it } != -1) {
+            out.write(buffer, 0, read)
+        }
+    }*/
 
     override fun onBackPressed() {
         finish()

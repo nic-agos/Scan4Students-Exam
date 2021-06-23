@@ -53,7 +53,6 @@ class CreateNotebookActivity : AppCompatActivity() {
         }
         var bool: Boolean? by Delegates.observable(null) { property, oldValue, newValue ->
             if(newValue==true){
-                //TODO cambiare alla vista dei quaderni personale
                 val intent= Intent(this, UserProfileActivity::class.java)
                 intent.putExtra("user", Session.getCurrUsername())
                 startActivity(intent)

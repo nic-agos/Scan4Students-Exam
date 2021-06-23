@@ -12,24 +12,35 @@ import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import it.skotlinyard.scan4students.R
+import it.skotlinyard.scan4students.controller.PageController
 import it.skotlinyard.scan4students.databinding.ActivityCameraBinding
 import it.skotlinyard.scan4students.utils.FolderWorker
+import it.skotlinyard.scan4students.utils.Session
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.File
 import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import kotlin.properties.Delegates
+
 typealias LumaListener = (luma: Double) -> Unit
 
 
 class CameraActivity : AppCompatActivity() {
     private var imageCapture: ImageCapture? = null
 
+    val context = this.applicationContext
+
     private lateinit var cameraFacing: String
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var binding: ActivityCameraBinding
+    //var controller: PageController(context)
 
     //ImageAnalyzer
     private class LuminosityAnalyzer(private val listener: LumaListener) : ImageAnalysis.Analyzer {
@@ -84,6 +95,16 @@ class CameraActivity : AppCompatActivity() {
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
+    var lastPageNumber: Int? by Delegates.observable(-1) { property, oldValue, newValue ->
+        if(newValue != -1){
+            val intent= Intent(this, UserProfileActivity::class.java)
+            intent.putExtra("user", Session.getCurrUsername())
+            startActivity(intent)
+        }
+        else
+            Toast.makeText(this, R.string.internal_error, Toast.LENGTH_SHORT).show()
+    }
+
     private fun takePhoto() {
         // Get a stable reference of the modifiable image capture use case
         val imageCapture = imageCapture ?: return
@@ -117,7 +138,9 @@ class CameraActivity : AppCompatActivity() {
                     Log.d(TAG, msg)
                 }
             })
-
+        /*CoroutineScope(Dispatchers.IO).launch {
+            lastPageNumber =
+        }*/
     }
 
     private fun startCamera(cameraSelector: CameraSelector) {

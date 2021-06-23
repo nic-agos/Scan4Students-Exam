@@ -20,4 +20,7 @@ interface DaoPagine {
     @Query("SELECT MAX(indice) FROM Pagine")
     fun getLatestUploadedPage(): Int
 
+    @Query("SELECT MAX(numPagina) FROM Pagine WHERE indice = :index")
+    fun getLastPageNumber(index: Int): Int
+
 }

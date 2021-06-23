@@ -39,6 +39,7 @@ class NotebookViewActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val notebookTitle= intent.getStringExtra("Nome")
+        val notebookIndex = intent.getIntExtra("indexNotebook" , -1)
 
         supportActionBar?.hide()
 
@@ -52,6 +53,7 @@ class NotebookViewActivity : AppCompatActivity() {
         rightIcon=findViewById(R.id.right_icon)
         rightIcon?.setOnClickListener{
             val intent= Intent(context, CameraActivity::class.java)
+            intent.putExtra("indexNotebook" , notebookIndex)
             intent.putExtra("pathToSave","/"+Session.getCurrUsername()+"/"+notebookTitle)
             startActivity(intent)
         }

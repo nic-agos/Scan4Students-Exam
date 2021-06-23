@@ -70,6 +70,7 @@ class StatsActivity : AppCompatActivity() {
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
             xAxis.setCenterAxisLabels(false)
             xAxis.setDrawGridLines(false)
+            barChart.setDrawValueAboveBar(false)
 
             
 
