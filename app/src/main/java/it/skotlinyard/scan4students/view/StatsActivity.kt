@@ -69,6 +69,8 @@ class StatsActivity : AppCompatActivity() {
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
             xAxis.setCenterAxisLabels(false)
             xAxis.setDrawGridLines(false);
+
+            barChart.setVisibleYRange(0.0f,5.0f,1.0f)
             
 
         }

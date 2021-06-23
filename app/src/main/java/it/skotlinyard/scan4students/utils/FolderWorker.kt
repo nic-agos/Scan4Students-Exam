@@ -8,7 +8,7 @@ tutti i path richiesti come attributi sono fatti in modo che lo / iniziale deve 
 quello finale no (es: /ciao/comestai/moltobenegrazie)
 */
 class FolderWorker {
-    private val startPath = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App"
+    public val startPath = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App"
 
     fun createNewDirectory(nameDir: String): Boolean{
         val folder = File(startPath, nameDir)
@@ -31,7 +31,7 @@ class FolderWorker {
     
     //Dato il pathToParent restituisce la cartella padre (lo usiamo per cambiare l'outputDirectory del file principale)
     //che contiene la posizione di dove le foto scattate veranno salvate
-    fun setOutputDirectory(pathToParent: String): File{
+    fun setOutputDirectory(pathToParent: String?): File{
         val mediaDir = File(startPath + pathToParent)
         return if (mediaDir != null && mediaDir.exists())
             mediaDir else return File(startPath)

@@ -19,6 +19,7 @@ import it.skotlinyard.scan4students.model.ImageAdapter
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.databinding.ActivityNotebookViewBinding
 import it.skotlinyard.scan4students.utils.FolderWorker
+import it.skotlinyard.scan4students.utils.Session
 
 class NotebookViewActivity : AppCompatActivity() {
 
@@ -37,6 +38,8 @@ class NotebookViewActivity : AppCompatActivity() {
         binding = ActivityNotebookViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val notebookTitle= intent.getStringExtra("Nome")
+
         supportActionBar?.hide()
 
         val context = this.applicationContext
@@ -49,12 +52,13 @@ class NotebookViewActivity : AppCompatActivity() {
         rightIcon=findViewById(R.id.right_icon)
         rightIcon?.setOnClickListener{
             val intent= Intent(context, CameraActivity::class.java)
+            intent.putExtra("pathToSave","/"+Session.getCurrUsername()+"/"+notebookTitle)
             startActivity(intent)
         }
         if(!intent.getBooleanExtra("add_btn",false))
             rightIcon?.visibility=View.GONE
 
-        val notebookTitle= intent.getStringExtra("Nome")
+
         title=findViewById(R.id.toolbar_title)
         title?.setText(notebookTitle)
 
@@ -79,6 +83,7 @@ class NotebookViewActivity : AppCompatActivity() {
             imageRecycler?.adapter= ImageAdapter(this, allPictures!!)
             progressBar?.visibility= View.GONE
         }
+
     }
 
     private fun getAllImages(): ArrayList<Image> {
@@ -86,10 +91,9 @@ class NotebookViewActivity : AppCompatActivity() {
 
 
         val gestore = FolderWorker()
-        val listOfFiles = gestore.getListFileFromDirectory("")
+        val listOfFiles = gestore.getListFileFromDirectory("/"+Session.getCurrUsername()+"/"+intent.getStringExtra("Nome"))
         if (listOfFiles != null) {
             listOfFiles.forEach { i ->
-                Toast.makeText(baseContext, i.name, Toast.LENGTH_SHORT).show()
                 val image = Image()
                 image.imagePath = i.path
                 image.imageName = i.name

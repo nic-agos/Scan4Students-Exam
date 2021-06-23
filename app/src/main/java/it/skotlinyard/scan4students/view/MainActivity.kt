@@ -3,25 +3,23 @@ package it.skotlinyard.scan4students.view
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.controller.LoginController
 import it.skotlinyard.scan4students.databinding.ActivityMainBinding
-import it.skotlinyard.scan4students.databinding.ActivityMainBinding.*
+import it.skotlinyard.scan4students.databinding.ActivityMainBinding.inflate
 import it.skotlinyard.scan4students.model.persistence.DbScan4Students
-import it.skotlinyard.scan4students.model.persistence.Universita
 import it.skotlinyard.scan4students.utils.FolderWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
 import kotlin.properties.Delegates
+
 
 //This is the login activity, set as the main activity. Every time the app is launched, users have to login
 class MainActivity : AppCompatActivity() {
@@ -78,8 +76,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun prepareFolders() {
-        println("CREIAMO STO FILE SYSTEM")
         val gestoreFiles = FolderWorker()
+        println("CREIAMO STO FILE SYSTEM")
+        /*val file = File("file:///android_asset/samplepictures/1_Analisi _I(2)")
+        println(file.name)
+        file.copyTo(File(gestoreFiles.startPath))*/
+
         val myCoroutineScope= CoroutineScope(Dispatchers.IO)
         myCoroutineScope.launch(Dispatchers.IO) {
             val db = DbScan4Students.getInstance(baseContext)

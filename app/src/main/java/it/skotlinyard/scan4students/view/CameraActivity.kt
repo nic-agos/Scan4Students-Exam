@@ -12,6 +12,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import it.skotlinyard.scan4students.databinding.ActivityCameraBinding
+import it.skotlinyard.scan4students.utils.FolderWorker
 import java.io.File
 import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
@@ -83,6 +84,11 @@ class CameraActivity : AppCompatActivity() {
     private fun takePhoto() {
         // Get a stable reference of the modifiable image capture use case
         val imageCapture = imageCapture ?: return
+
+        //Set right path to save file
+        val gestore = FolderWorker()
+        println("S4S"+intent.getStringExtra("pathToSave"))
+        outputDirectory = gestore.setOutputDirectory(intent.getStringExtra("pathToSave"))
 
         // Create time-stamped output file to hold the image
         val photoFile = File(
