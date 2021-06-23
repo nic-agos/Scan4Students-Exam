@@ -100,7 +100,16 @@ class NotebookViewActivity : AppCompatActivity() {
                 images.add(image)
             }
         }
-
         return images
+    }
+
+    override fun onResume() {
+        super.onResume()
+        progressBar?.visibility= View.VISIBLE
+        //get all Images from storage
+        allPictures=getAllImages()
+        //set adapter to recycler
+        imageRecycler?.adapter= ImageAdapter(this, allPictures!!)
+        progressBar?.visibility= View.GONE
     }
 }

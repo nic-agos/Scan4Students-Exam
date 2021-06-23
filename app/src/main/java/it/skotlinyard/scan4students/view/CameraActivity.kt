@@ -1,6 +1,7 @@
 package it.skotlinyard.scan4students.view
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -74,7 +75,9 @@ class CameraActivity : AppCompatActivity() {
         }
 
         // Set up the listener for take photo button
-        binding.captureBtn.setOnClickListener { takePhoto() }
+        binding.captureBtn.setOnClickListener { takePhoto()
+            Toast.makeText(this, "CLICK!", Toast.LENGTH_SHORT).show()
+        }
 
         outputDirectory = getOutputDirectory()
 
@@ -193,6 +196,7 @@ class CameraActivity : AppCompatActivity() {
         super.onDestroy()
         cameraExecutor.shutdown()
     }
+
 
     companion object {
         private const val TAG = "CameraXBasic"
