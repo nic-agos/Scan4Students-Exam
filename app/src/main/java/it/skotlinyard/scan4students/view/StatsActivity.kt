@@ -70,7 +70,7 @@ class StatsActivity : AppCompatActivity() {
             xAxis.setCenterAxisLabels(false)
             xAxis.setDrawGridLines(false);
 
-            barChart.setVisibleYRange(0.0f,5.0f,1.0f)
+
             
 
         }
