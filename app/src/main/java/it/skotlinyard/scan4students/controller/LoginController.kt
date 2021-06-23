@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import java.sql.SQLException
 
 
-//TODO class to be tested
+
 class LoginController(context: Context) {
 
     private var db = DbScan4Students.getInstance(context)
