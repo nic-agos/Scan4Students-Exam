@@ -1,6 +1,7 @@
 package it.skotlinyard.scan4students.view
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -15,6 +16,7 @@ import androidx.core.content.ContextCompat
 import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.controller.PageController
 import it.skotlinyard.scan4students.databinding.ActivityCameraBinding
+import it.skotlinyard.scan4students.model.persistence.Pagine
 import it.skotlinyard.scan4students.utils.FolderWorker
 import it.skotlinyard.scan4students.utils.Session
 import kotlinx.coroutines.CoroutineScope
@@ -34,13 +36,15 @@ typealias LumaListener = (luma: Double) -> Unit
 class CameraActivity : AppCompatActivity() {
     private var imageCapture: ImageCapture? = null
 
-    val context = this.applicationContext
-
     private lateinit var cameraFacing: String
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var binding: ActivityCameraBinding
-    //var controller: PageController(context)
+    private lateinit var context: Context
+    private lateinit var controller: PageController
+    private var quadId = -1
+    private lateinit var photoFile: File
+
 
     //ImageAnalyzer
     private class LuminosityAnalyzer(private val listener: LumaListener) : ImageAnalysis.Analyzer {
@@ -74,6 +78,9 @@ class CameraActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+        context = this.applicationContext
+        controller = PageController(context)
+
         // Request camera permissions
         if (allPermissionsGranted()) {
             cameraFacing="BACK"
@@ -95,11 +102,11 @@ class CameraActivity : AppCompatActivity() {
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
-    var lastPageNumber: Int? by Delegates.observable(-1) { property, oldValue, newValue ->
+    var lastPageNumber: Int by Delegates.observable(-1) { property, oldValue, newValue ->
         if(newValue != -1){
-            val intent= Intent(this, UserProfileActivity::class.java)
-            intent.putExtra("user", Session.getCurrUsername())
-            startActivity(intent)
+            var pagina = Pagine(quadId, newValue+1, photoFile.absolutePath)
+            var result = controller.uploadPage(pagina)
+            Log.v("S4S","Risultato upload pagina: $result")
         }
         else
             Toast.makeText(this, R.string.internal_error, Toast.LENGTH_SHORT).show()
@@ -112,10 +119,11 @@ class CameraActivity : AppCompatActivity() {
         //Set right path to save file
         val gestore = FolderWorker()
         println("S4S"+intent.getStringExtra("pathToSave"))
+        quadId = intent.getIntExtra("indexNotebook", -1)
         outputDirectory = gestore.setOutputDirectory(intent.getStringExtra("pathToSave"))
 
         // Create time-stamped output file to hold the image
-        val photoFile = File(
+        photoFile = File(
             outputDirectory,
             SimpleDateFormat(
                 FILENAME_FORMAT, Locale.US
@@ -138,9 +146,9 @@ class CameraActivity : AppCompatActivity() {
                     Log.d(TAG, msg)
                 }
             })
-        /*CoroutineScope(Dispatchers.IO).launch {
-            lastPageNumber =
-        }*/
+        CoroutineScope(Dispatchers.IO).launch {
+            lastPageNumber = controller.getLastPageNumber(quadId)
+        }
     }
 
     private fun startCamera(cameraSelector: CameraSelector) {
