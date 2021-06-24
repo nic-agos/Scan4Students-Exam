@@ -83,10 +83,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val gestoreFiles = FolderWorker()
-        println("CREIAMO STO FILE SYSTEM")
-        /*val file = File("file:///android_asset/samplepictures/1_Analisi _I(2)")
-        println(file.name)
-        file.copyTo(File(gestoreFiles.startPath))*/
+
 
         val myCoroutineScope= CoroutineScope(Dispatchers.IO)
         myCoroutineScope.launch(Dispatchers.IO) {
@@ -123,7 +120,7 @@ class MainActivity : AppCompatActivity() {
 
 
             pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Nicco2303/Quad di Analisi I"
-            `in` = assetManager.open("samplepictures/1_Analisi_ I(1).jpg")
+            `in` = assetManager.open("samplepictures/1_Analisi_ I(2).jpg")
             outFile = File(pathLocal, "1_Analisi_I(2).jpg")
             out = FileOutputStream(outFile)
             copyFile(`in`, out)
@@ -185,39 +182,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*private fun copyAssets() {
-        val assetManager = assets
-        var files: Array<String>? = null
-        try {
-            files = assetManager.list("samplepictures") //MODIFICA
-        } catch (e: IOException) {
-        }
-        if (files != null) for (filename in files) {
-            var `in`: InputStream? = null
-            var out: OutputStream? = null
-            try {
-                `in` = assetManager.open("samplepictures/" + filename)
-                val outFile = File("/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App", filename)
-                out = FileOutputStream(outFile)
-                copyFile(`in`, out)
-            } catch (e: IOException) {
-                Log.e("tag", "Failed to copy asset file: $filename", e)
-            } finally {
-                if (`in` != null) {
-                    try {
-                        `in`.close()
-                    } catch (e: IOException) {
-                    }
-                }
-                if (out != null) {
-                    try {
-                        out.close()
-                    } catch (e: IOException) {
-                    }
-                }
-            }
-        }
-    }*/
 
     @Throws(IOException::class)
     private fun copyFile(`in`: InputStream, out: OutputStream) {

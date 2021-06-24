@@ -93,7 +93,8 @@ class NotebookViewActivity : AppCompatActivity() {
 
 
         val gestore = FolderWorker()
-        val listOfFiles = gestore.getListFileFromDirectory("/"+Session.getCurrUsername()+"/"+intent.getStringExtra("Nome"))
+        val currentUser = intent.getStringExtra("user")
+        val listOfFiles = gestore.getListFileFromDirectory("/"+currentUser+"/"+intent.getStringExtra("Nome"))
         if (listOfFiles != null) {
             listOfFiles.forEach { i ->
                 val image = Image()

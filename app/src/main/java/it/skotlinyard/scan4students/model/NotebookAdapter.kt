@@ -159,6 +159,7 @@ class NotebookAdapter(private var context: Context, private var notebooksList: M
 
         holder.image?.setOnClickListener {
             val intent= Intent(context, NotebookViewActivity::class.java)
+            intent.putExtra("user",currentNotebook.studente)
             intent.putExtra("Nome",currentNotebook.titolo)
             intent.putExtra("indexNotebook" , currentNotebook.indice)
             if (Session.getCurrUsername()==currentNotebook.studente)
