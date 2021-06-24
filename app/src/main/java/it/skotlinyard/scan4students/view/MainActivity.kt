@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         prepareFolders()
-        copyAssets()
+        //copyAssets()
 
         val controller = LoginController(this)
         var bool: Boolean? by Delegates.observable(null){property, oldValue, newValue ->
@@ -124,11 +124,11 @@ class MainActivity : AppCompatActivity() {
             copyFile(`in`, out)
 
 
-            pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Nicco2303/Quad di Analisi I"
+            /*pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Nicco2303/Quad di Analisi I"
             `in` = assetManager.open("samplepictures/1_Analisi_ I(2).jpg")
             outFile = File(pathLocal, "1_Analisi_I(2).jpg")
             out = FileOutputStream(outFile)
-            copyFile(`in`, out)
+            copyFile(`in`, out)*/
 
 
             pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Nicco2303/Quad di Geometria"
