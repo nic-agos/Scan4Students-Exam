@@ -77,11 +77,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun prepareOutputDirectory() {
+        val mediaDir = externalMediaDirs.firstOrNull()?.let {
+            File(it, "CameraX App").apply { mkdirs() } }
+    }
 
     private fun prepareFolders() {
 
 
-
+        //Preparazione percorso file locali "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App"
+        prepareOutputDirectory()
         val gestoreFiles = FolderWorker()
 
 
