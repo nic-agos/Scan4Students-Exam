@@ -39,7 +39,9 @@ class RegistrationActivity : AppCompatActivity() {
             binding.spinner.setAdapter(adapter)
         }
         CoroutineScope(Dispatchers.IO).launch{
-            Looper.prepare()
+            if(Looper.myLooper()==null){
+                Looper.prepare()
+            }
             colleges = getter.getCollegesList()
         }
 
@@ -99,6 +101,10 @@ class RegistrationActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
     private fun syntaxControl(
         name: String,
         surname: String,

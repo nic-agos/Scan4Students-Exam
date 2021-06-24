@@ -7,13 +7,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import it.skotlinyard.scan4students.R
 import it.skotlinyard.scan4students.controller.LoginController
 import it.skotlinyard.scan4students.databinding.ActivityMainBinding
 import it.skotlinyard.scan4students.databinding.ActivityMainBinding.inflate
 import it.skotlinyard.scan4students.model.persistence.DbScan4Students
-import it.skotlinyard.scan4students.model.persistence.Pagine
 import it.skotlinyard.scan4students.utils.FolderWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         binding = inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
-
+        val context=this.applicationContext
         prepareFolders()
 
         val controller = LoginController(this)
@@ -56,8 +57,11 @@ class MainActivity : AppCompatActivity() {
             }
             else{ //login unsuccesful, try again
                 Log.v("S4S", "Entrato nell'else nella MainActivity")
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                CoroutineScope(Dispatchers.Main).launch {
+                    Toast.makeText(context, R.string.user_psw_err, Toast.LENGTH_SHORT).show()
+                }
+                binding.email.setText("")
+                binding.psw.setText("")
             }
         }
         binding.registrationBtn.setOnClickListener{

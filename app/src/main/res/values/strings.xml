@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Scan4Students</string>
     <string name="password">Password</string>
+    <string name="user_psw_err">Wrong Username or Password</string>
     <string name="username">Username</string>
     <string name="notYetReg">Not Registered yet?</string>
     <string name="reg">Sign Up!</string>

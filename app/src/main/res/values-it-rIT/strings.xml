@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Scan4Students</string>
     <string name="password">Password</string>
+    <string name="user_psw_err">Nome utente o password sbagliati</string>
     <string name="username">Username</string>
     <string name="notYetReg">Non sei ancora registrato?</string>
     <string name="reg">Registrati!</string>
