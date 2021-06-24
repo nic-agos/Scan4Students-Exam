@@ -8,6 +8,7 @@ tutti i path richiesti come attributi sono fatti in modo che lo / iniziale deve 
 quello finale no (es: /ciao/comestai/moltobenegrazie)
 */
 class FolderWorker {
+
     public val startPath = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App"
 
     fun createNewDirectory(nameDir: String): Boolean{

@@ -13,6 +13,7 @@ import it.skotlinyard.scan4students.controller.LoginController
 import it.skotlinyard.scan4students.databinding.ActivityMainBinding
 import it.skotlinyard.scan4students.databinding.ActivityMainBinding.inflate
 import it.skotlinyard.scan4students.model.persistence.DbScan4Students
+import it.skotlinyard.scan4students.model.persistence.Pagine
 import it.skotlinyard.scan4students.utils.FolderWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         prepareFolders()
+        copyAssets()
 
         val controller = LoginController(this)
         var bool: Boolean? by Delegates.observable(null){property, oldValue, newValue ->
@@ -75,7 +77,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun prepareFolders() {
+
+
+
         val gestoreFiles = FolderWorker()
         println("CREIAMO STO FILE SYSTEM")
         /*val file = File("file:///android_asset/samplepictures/1_Analisi _I(2)")
@@ -98,6 +104,87 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun copyAssets() {
+        val assetManager = assets
+        var `in`: InputStream? = null
+        var out: OutputStream? = null
+        var outFile = File("/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Nicco2303/Quad di Analisi I", "1_Analisi_I(1).jpg")
+        var pathLocal = ""
+
+
+
+        try{
+
+            pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Nicco2303/Quad di Analisi I"
+            `in` = assetManager.open("samplepictures/1_Analisi_ I(1).jpg")
+            outFile = File(pathLocal, "1_Analisi_I(1).jpg")
+            out = FileOutputStream(outFile)
+            copyFile(`in`, out)
+
+
+            pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Nicco2303/Quad di Analisi I"
+            `in` = assetManager.open("samplepictures/1_Analisi_ I(1).jpg")
+            outFile = File(pathLocal, "1_Analisi_I(2).jpg")
+            out = FileOutputStream(outFile)
+            copyFile(`in`, out)
+
+
+            pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Nicco2303/Quad di Geometria"
+            `in` = assetManager.open("samplepictures/2_Geometria(1).jpg")
+            outFile = File(pathLocal, "2_Geometria(1).jpg")
+            out = FileOutputStream(outFile)
+            copyFile(`in`, out)
+
+
+            pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Nicco2303/Quad di Geometria"
+            `in` = assetManager.open("samplepictures/2_Geometria(2).jpg")
+            outFile = File(pathLocal, "2_Geometria(2).jpg")
+            out = FileOutputStream(outFile)
+            copyFile(`in`, out)
+
+            pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Anarion/Quad di Diritto Privato"
+            `in` = assetManager.open("samplepictures/3_Diritto_Privato.jpg")
+            outFile = File(pathLocal, "3_Diritto_Privato(1).jpg")
+            out = FileOutputStream(outFile)
+            copyFile(`in`, out)
+
+            pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Antius/Quad di Diritto Civile"
+            `in` = assetManager.open("samplepictures/4_Diritto_Civile.jpg")
+            outFile = File(pathLocal, "4_Diritto_Civile(1).jpg")
+            out = FileOutputStream(outFile)
+            copyFile(`in`, out)
+
+            pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/BLBlue/Quad di Economia Aziendale"
+            `in` = assetManager.open("samplepictures/5_Economia_Aziendale.jpg")
+            outFile = File(pathLocal, "5_Economia_Aziendale(1).jpg")
+            out = FileOutputStream(outFile)
+            copyFile(`in`, out)
+
+            pathLocal = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App/Lorenz99/Quad di Diritto Ecclesiastico"
+            `in` = assetManager.open("samplepictures/6_Diritto_Ecclesiastico.jpg")
+            outFile = File(pathLocal, "6_Diritto_Ecclesiastico(1).jpg")
+            out = FileOutputStream(outFile)
+            copyFile(`in`, out)
+
+
+        }catch(e: IOException) {
+            println("S4S: ERRORE INSERIMENTO PAGINE DEFAULT")
+        }finally {
+            if (`in` != null) {
+                try {
+                    `in`.close()
+                } catch (e: IOException) {
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close()
+                } catch (e: IOException) {
+                }
+            }
+        }
+    }
+
     /*private fun copyAssets() {
         val assetManager = assets
         var files: Array<String>? = null
@@ -109,8 +196,8 @@ class MainActivity : AppCompatActivity() {
             var `in`: InputStream? = null
             var out: OutputStream? = null
             try {
-                `in` = assetManager.open(filename)
-                val outFile = File(getExternalFilesDir(null), filename)
+                `in` = assetManager.open("samplepictures/" + filename)
+                val outFile = File("/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App", filename)
                 out = FileOutputStream(outFile)
                 copyFile(`in`, out)
             } catch (e: IOException) {
@@ -120,19 +207,17 @@ class MainActivity : AppCompatActivity() {
                     try {
                         `in`.close()
                     } catch (e: IOException) {
-                        // NOOP
                     }
                 }
                 if (out != null) {
                     try {
                         out.close()
                     } catch (e: IOException) {
-                        // NOOP
                     }
                 }
             }
         }
-    }
+    }*/
 
     @Throws(IOException::class)
     private fun copyFile(`in`: InputStream, out: OutputStream) {
@@ -141,7 +226,7 @@ class MainActivity : AppCompatActivity() {
         while (`in`.read(buffer).also { read = it } != -1) {
             out.write(buffer, 0, read)
         }
-    }*/
+    }
 
     override fun onBackPressed() {
         finish()

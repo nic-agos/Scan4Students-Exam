@@ -11,6 +11,7 @@ import it.skotlinyard.scan4students.controller.NotebookController
 import it.skotlinyard.scan4students.controller.RegistrationController
 import it.skotlinyard.scan4students.databinding.ActivityCreateNotebookBinding
 import it.skotlinyard.scan4students.model.persistence.Quaderni
+import it.skotlinyard.scan4students.utils.FolderWorker
 import it.skotlinyard.scan4students.utils.Session
 import it.skotlinyard.scan4students.utils.SpinnerGetter
 import kotlinx.coroutines.CoroutineScope
@@ -87,6 +88,8 @@ class CreateNotebookActivity : AppCompatActivity() {
                         val quad = Quaderni(binding.entryTitle.text.toString(),
                             subID,0, visibility,"ITA", Session.getCurrUsername(),currentDate.toString())
                         bool = controller.uploadNotebook(quad)
+                        val gestore = FolderWorker()
+                        gestore.createNewSubDirectory("/"+Session.getCurrUsername(),quad.titolo)
                     }else{
                         CoroutineScope(Dispatchers.Main).launch {
                             Toast.makeText(context, R.string.prof_sub_err, Toast.LENGTH_LONG).show()
