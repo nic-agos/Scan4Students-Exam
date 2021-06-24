@@ -42,7 +42,7 @@ class HomeActivity: AppCompatActivity() {
         val ncontroller = NotebookController(this)
 
         var personalNotebookList: MutableList<Quaderni>? by Delegates.observable(null) { property, oldValue, newValue ->
-            if (newValue.isNullOrEmpty())
+            if (newValue==null)
                 Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
             else {
                 Session.notebookSearchList = newValue

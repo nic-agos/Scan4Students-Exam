@@ -48,7 +48,7 @@ class UserProfileActivity : AppCompatActivity() {
             binding.collegeText.text=newValue
         }
         var personalNotebookList: MutableList<Quaderni>?by Delegates.observable(null) { property, oldValue, newValue ->
-            if (newValue.isNullOrEmpty())
+            if (newValue==null)
                 Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
             else{
                 Session.notebookSearchList = newValue
