@@ -9,7 +9,7 @@ class SearchController(context: Context) {
     private val db = DbScan4Students.getInstance(context)
 
     fun searchNotebooksBySubject(subject: String): MutableList<Quaderni>{
-    var resList= mutableListOf<Quaderni>()
+    val resList= mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
             val subList = db.materieDao().getSubjectBySubject(subject)
             for (item in subList){
@@ -22,7 +22,7 @@ class SearchController(context: Context) {
     }
 
     fun searchNotebooksByProf(prof: String): MutableList<Quaderni>{
-        var resList = mutableListOf<Quaderni>()
+        val resList = mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
             val subList = db.materieDao().getSubjectByProf(prof)
             for (item in subList){
@@ -35,7 +35,7 @@ class SearchController(context: Context) {
     }
 
     fun searchNotebooksByFaculty(faculty: String): MutableList<Quaderni>{
-        var resList = mutableListOf<Quaderni>()
+        val resList = mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
             val subList = db.materieDao().getSubjectsByFaculty(faculty)
             for (item in subList){
@@ -48,18 +48,20 @@ class SearchController(context: Context) {
     }
 
     fun searchNotebooksByProfAndSubject(prof: String, subject: String): MutableList<Quaderni>{
-        var resList= mutableListOf<Quaderni>()
-        val quadList: MutableList<Quaderni>
+        val resList= mutableListOf<Quaderni>()
+        var quadList = mutableListOf<Quaderni>()
             val materia = db.materieDao().getSubjectByProfAndSubject(prof, subject)
-            quadList = db.quaderniDao().getPublicNotebooksBySubject(materia.indice)
-            if (quadList.isNotEmpty()){
+            if(materia != null){
+                quadList = db.quaderniDao().getPublicNotebooksBySubject(materia.indice)
+            }
+            if (!quadList.isNullOrEmpty()){
                 resList.addAll(quadList)
             }
         return resList
     }
 
     fun searchNotebooksByProfAndSubjectAndFaculty(prof: String, subject: String, faculty: String): MutableList<Quaderni>{
-        var resList= mutableListOf<Quaderni>()
+        val resList= mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
            val subList = db.materieDao().getSubjectByProfAndSubjectAndFaculty(prof, subject, faculty)
             for (item in subList){
@@ -72,7 +74,7 @@ class SearchController(context: Context) {
     }
 
     fun searchNotebooksByProfAndFaculty(prof: String, faculty: String): MutableList<Quaderni>{
-        var resList= mutableListOf<Quaderni>()
+        val resList= mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
             val subList = db.materieDao().getSubjectByProfAndFaculty(prof, faculty)
             for (item in subList){
@@ -85,7 +87,7 @@ class SearchController(context: Context) {
     }
 
     fun searchNotebooksBySubjectAndFaculty(subject: String, faculty: String): MutableList<Quaderni>{
-        var resList= mutableListOf<Quaderni>()
+        val resList= mutableListOf<Quaderni>()
         var quadList: MutableList<Quaderni>
             val subList = db.materieDao().getSubjectBySubjectAndFaculty(subject, faculty)
             for (item in subList){
